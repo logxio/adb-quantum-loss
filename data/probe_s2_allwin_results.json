@@ -1,0 +1,1214 @@
+{
+  "schema": "adb.probe.s2.v1",
+  "seed": 20261118,
+  "implementation": {
+    "path": "src/probe_s2_allwin.py",
+    "sha256": "4ae3230339e4523f1f7e2ec48e62f933e56b01432ded4e2a84cfe73b82d88b8e"
+  },
+  "input": {
+    "path": "data/processed/loss_gdp_panel.csv",
+    "sha256": "3b7b463fee711e4c1b1080908b51d9bc977c67d7b55551a1ed78838866048e71",
+    "countries": [
+      "PHL",
+      "VNM",
+      "THA",
+      "IDN"
+    ],
+    "training_years": [
+      1985,
+      1986,
+      1987,
+      1988,
+      1989,
+      1990,
+      1991,
+      1992,
+      1993,
+      1994,
+      1995,
+      1996,
+      1997,
+      1999,
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013
+    ],
+    "test_years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "train_n": 28,
+    "test_n": 10,
+    "missing_training_years": [
+      1998
+    ],
+    "missing_test_years": [
+      2018
+    ],
+    "unit": "sum of national loss / national GDP ratios; equal GDP normalized notional"
+  },
+  "protocol": {
+    "training_window": [
+      1985,
+      2013
+    ],
+    "heldout_window": [
+      2014,
+      2024
+    ],
+    "simulation_n": 16384,
+    "parameter_selection": "all fitting and inner CV use training years only",
+    "test_access": "test matrix and test PIT evaluated only after final S2 and all seven baseline parameters are frozen",
+    "known_s1_holdout_reused": true,
+    "holdout_interpretation": "S1 results on these years were already visible before S2 design. This is a chronological reused holdout, not a fresh independent discovery sample.",
+    "baselines": "All seven S1 implementations refitted from unchanged training input; metrics and Sobol seed retained",
+    "marginals": "S1 GPD parameter fits reused exactly; S2 inverse transform evaluates tail probabilities without the S1 1e-10 numerical clipping",
+    "metric_definitions": {
+      "split": "chronological fixed 75 percent training, 25 percent heldout",
+      "fit_data": "training years only, including marginal GPD fitting and cumulant targets",
+      "sampling": "fixed scrambled Sobol uniforms, deterministic seed; wall time is measured and varies by host load",
+      "simulation_n": 16384,
+      "joint_exceedance": "at least two countries exceed the same marginal PIT threshold",
+      "tail_loglikelihood": "continuous joint loss density on all-positive heldout years with any PIT above 0.8",
+      "var_backtest": "absolute empirical exceedance frequency minus 0.01",
+      "tvar_backtest": "absolute ES identification moment divided by predicted ES",
+      "energy_score": "2048 forecast samples: mean observation distance minus half exact all-unordered-pairs forecast distance",
+      "not_identifiable": [
+        "99 percent and 99.5 percent tail calibration with only ten heldout annual observations",
+        "event-family GroupKFold from annual all-hazard aggregates",
+        "causal physical cross-border event dependence",
+        "USD reinsurance capital without common-year exposure currency weights"
+      ],
+      "quantum_scope": "classical tensor network and state vector simulation, no quantum advantage claim",
+      "source_zero_caveat": "OWID upstream ETL fills missing damage components with zero before annual aggregation; no additional missing country year imputation is performed here",
+      "mps_asymptotic_upper_tail_dependence": 0
+    },
+    "quantum_scope": "classical low rank probability model; no QPU use",
+    "event_family_holdout_identifiable": false
+  },
+  "training_selection": {
+    "method": "three expanding chronological folds entirely inside 1985 through 2013",
+    "objective": "validation mean continuous copula negative log likelihood",
+    "candidate_grid_declared_before_test": [
+      {
+        "bins": 2,
+        "rank": 2,
+        "cumulant_penalty": 0.01
+      },
+      {
+        "bins": 2,
+        "rank": 2,
+        "cumulant_penalty": 0.1
+      },
+      {
+        "bins": 4,
+        "rank": 2,
+        "cumulant_penalty": 0.01
+      },
+      {
+        "bins": 4,
+        "rank": 2,
+        "cumulant_penalty": 0.1
+      },
+      {
+        "bins": 4,
+        "rank": 4,
+        "cumulant_penalty": 0.01
+      },
+      {
+        "bins": 4,
+        "rank": 4,
+        "cumulant_penalty": 0.1
+      }
+    ],
+    "weighted_validation_nll": [
+      0.034961282646436706,
+      0.034961331825545165,
+      -0.02573637208407879,
+      -0.025736372084078744,
+      -0.14536308997023326,
+      -0.1453630899702333
+    ],
+    "selected_candidate": 5,
+    "folds": [
+      {
+        "training_years": [
+          1985,
+          1986,
+          1987,
+          1988,
+          1989,
+          1990,
+          1991,
+          1992,
+          1993,
+          1994,
+          1995,
+          1996,
+          1997,
+          1999
+        ],
+        "validation_years": [
+          2000,
+          2001,
+          2002,
+          2003,
+          2004
+        ],
+        "candidates": [
+          {
+            "candidate": 0,
+            "validation_copula_nll": -0.07202939561327444,
+            "fitted_weights": [
+              0.3834743591785283,
+              0.6065256408214718,
+              0.010000000000000033
+            ],
+            "lambda_upper": 0.00064936442952217,
+            "runtime_ms": 10.996040997270029
+          },
+          {
+            "candidate": 1,
+            "validation_copula_nll": -0.0720292579117707,
+            "fitted_weights": [
+              0.3834761322295852,
+              0.6065238677704149,
+              0.01
+            ],
+            "lambda_upper": 0.0006493644295221679,
+            "runtime_ms": 10.841959003300872
+          },
+          {
+            "candidate": 2,
+            "validation_copula_nll": -0.22457371571502188,
+            "fitted_weights": [
+              1.3877787807814457e-16,
+              0.99,
+              0.01
+            ],
+            "lambda_upper": 0.0006493644295221679,
+            "runtime_ms": 10.20858300034888
+          },
+          {
+            "candidate": 3,
+            "validation_copula_nll": -0.2245737157150217,
+            "fitted_weights": [
+              0.0,
+              0.99,
+              0.01
+            ],
+            "lambda_upper": 0.0006493644295221679,
+            "runtime_ms": 10.02495899592759
+          },
+          {
+            "candidate": 4,
+            "validation_copula_nll": -0.179050896988123,
+            "fitted_weights": [
+              0.0,
+              0.99,
+              0.009999999999999998
+            ],
+            "lambda_upper": 0.0006493644295221678,
+            "runtime_ms": 17.300542000157293
+          },
+          {
+            "candidate": 5,
+            "validation_copula_nll": -0.17905089698812313,
+            "fitted_weights": [
+              0.0,
+              0.9900000000000001,
+              0.01
+            ],
+            "lambda_upper": 0.0006493644295221679,
+            "runtime_ms": 16.054040999733843
+          }
+        ]
+      },
+      {
+        "training_years": [
+          1985,
+          1986,
+          1987,
+          1988,
+          1989,
+          1990,
+          1991,
+          1992,
+          1993,
+          1994,
+          1995,
+          1996,
+          1997,
+          1999,
+          2000,
+          2001,
+          2002,
+          2003,
+          2004
+        ],
+        "validation_years": [
+          2005,
+          2006,
+          2007,
+          2008,
+          2009
+        ],
+        "candidates": [
+          {
+            "candidate": 0,
+            "validation_copula_nll": 0.17732269764438793,
+            "fitted_weights": [
+              2.7755575615628914e-17,
+              0.99,
+              0.01
+            ],
+            "lambda_upper": 0.0006493644295221679,
+            "runtime_ms": 10.327500000130385
+          },
+          {
+            "candidate": 1,
+            "validation_copula_nll": 0.17732269764438793,
+            "fitted_weights": [
+              0.0,
+              0.99,
+              0.010000000000000024
+            ],
+            "lambda_upper": 0.0006493644295221695,
+            "runtime_ms": 10.34158300171839
+          },
+          {
+            "candidate": 2,
+            "validation_copula_nll": 0.25629812539875757,
+            "fitted_weights": [
+              0.0,
+              0.99,
+              0.010000000000000042
+            ],
+            "lambda_upper": 0.0006493644295221706,
+            "runtime_ms": 10.615583996695932
+          },
+          {
+            "candidate": 3,
+            "validation_copula_nll": 0.25629812539875757,
+            "fitted_weights": [
+              5.551115123125783e-17,
+              0.99,
+              0.01
+            ],
+            "lambda_upper": 0.0006493644295221679,
+            "runtime_ms": 11.078916999395005
+          },
+          {
+            "candidate": 4,
+            "validation_copula_nll": 0.11323782519493239,
+            "fitted_weights": [
+              0.0,
+              0.9899999999999999,
+              0.010000000000000085
+            ],
+            "lambda_upper": 0.0006493644295221734,
+            "runtime_ms": 18.035249995591585
+          },
+          {
+            "candidate": 5,
+            "validation_copula_nll": 0.11323782519493242,
+            "fitted_weights": [
+              0.0,
+              0.9899999999999999,
+              0.010000000000000042
+            ],
+            "lambda_upper": 0.0006493644295221706,
+            "runtime_ms": 18.849416002922226
+          }
+        ]
+      },
+      {
+        "training_years": [
+          1985,
+          1986,
+          1987,
+          1988,
+          1989,
+          1990,
+          1991,
+          1992,
+          1993,
+          1994,
+          1995,
+          1996,
+          1997,
+          1999,
+          2000,
+          2001,
+          2002,
+          2003,
+          2004,
+          2005,
+          2006,
+          2007,
+          2008,
+          2009
+        ],
+        "validation_years": [
+          2010,
+          2011,
+          2012,
+          2013
+        ],
+        "candidates": [
+          {
+            "candidate": 0,
+            "validation_copula_nll": -0.009252138276363384,
+            "fitted_weights": [
+              0.0,
+              0.9899999999999999,
+              0.010000000000000066
+            ],
+            "lambda_upper": 0.0006493644295221722,
+            "runtime_ms": 11.312624999845866
+          },
+          {
+            "candidate": 1,
+            "validation_copula_nll": -0.009252138276363453,
+            "fitted_weights": [
+              2.7755575615628914e-17,
+              0.99,
+              0.01
+            ],
+            "lambda_upper": 0.0006493644295221679,
+            "runtime_ms": 11.029499997675885
+          },
+          {
+            "candidate": 2,
+            "validation_copula_nll": -0.12973281439894538,
+            "fitted_weights": [
+              5.5511151231257815e-17,
+              0.9899999999999999,
+              0.009999999999999998
+            ],
+            "lambda_upper": 0.0006493644295221678,
+            "runtime_ms": 10.788499996124301
+          },
+          {
+            "candidate": 3,
+            "validation_copula_nll": -0.12973281439894543,
+            "fitted_weights": [
+              0.0,
+              0.99,
+              0.01
+            ],
+            "lambda_upper": 0.0006493644295221679,
+            "runtime_ms": 10.437666998768691
+          },
+          {
+            "candidate": 4,
+            "validation_copula_nll": -0.42650447515432816,
+            "fitted_weights": [
+              0.0,
+              0.9899999999999998,
+              0.010000000000000302
+            ],
+            "lambda_upper": 0.0006493644295221875,
+            "runtime_ms": 13.46304100297857
+          },
+          {
+            "candidate": 5,
+            "validation_copula_nll": -0.4265044751543281,
+            "fitted_weights": [
+              0.0,
+              0.99,
+              0.009999999999999998
+            ],
+            "lambda_upper": 0.0006493644295221678,
+            "runtime_ms": 13.671542001247872
+          }
+        ]
+      }
+    ],
+    "weight_bounds": {
+      "MPS": 0.05,
+      "EV": 0.01
+    },
+    "EV_theta_lower_bound": 1.05
+  },
+  "training_selection_runtime_ms": 247.9793750026147,
+  "frozen_parameter_sha256": "e7896f02cd90d31e0c37cf6c2707e2a32834124715635dd1cd640a8af04127ce",
+  "margins": {
+    "PHL": {
+      "p_zero": 0.0,
+      "threshold_loss_gdp": 0.00545671116,
+      "threshold_cdf": 0.8,
+      "gpd_shape": 0.3018348981461418,
+      "gpd_scale": 0.007619955714967565,
+      "shape_bounds": [
+        0.0,
+        0.95
+      ],
+      "positive_tail_training_count": 6,
+      "fourth_loss_moment_exists": false
+    },
+    "VNM": {
+      "p_zero": 0.07142857142857142,
+      "threshold_loss_gdp": 0.010790116,
+      "threshold_cdf": 0.8142857142857143,
+      "gpd_shape": 0.0,
+      "gpd_scale": 0.008281051669867732,
+      "shape_bounds": [
+        0.0,
+        0.95
+      ],
+      "positive_tail_training_count": 5,
+      "fourth_loss_moment_exists": true
+    },
+    "THA": {
+      "p_zero": 0.0,
+      "threshold_loss_gdp": 0.00269911088,
+      "threshold_cdf": 0.8,
+      "gpd_shape": 0.95,
+      "gpd_scale": 0.003547469083485665,
+      "shape_bounds": [
+        0.0,
+        0.95
+      ],
+      "positive_tail_training_count": 6,
+      "fourth_loss_moment_exists": false
+    },
+    "IDN": {
+      "p_zero": 0.07142857142857142,
+      "threshold_loss_gdp": 0.0034366214,
+      "threshold_cdf": 0.8142857142857143,
+      "gpd_shape": 0.6303070537913954,
+      "gpd_scale": 0.005692636760019212,
+      "shape_bounds": [
+        0.0,
+        0.95
+      ],
+      "positive_tail_training_count": 5,
+      "fourth_loss_moment_exists": false
+    }
+  },
+  "results": [
+    {
+      "model": "Independent",
+      "fit_runtime_ms": 0.0018749997252598405,
+      "tail_joint_log_likelihood": 15.84307274713268,
+      "tail_copula_log_likelihood": 0.0,
+      "tail_test_observations": 3,
+      "pool_var_99_loss_gdp_sum": 0.1252622124257029,
+      "pool_var_995_loss_gdp_sum": 0.19468336432782843,
+      "pool_tvar_99_loss_gdp_sum": 0.4839438063667228,
+      "var_99_coverage_error": 0.01,
+      "tvar_99_calibration_moment_error": 0.7411637244288198,
+      "sample_runtime_ms": 1.3928749976912513,
+      "joint_exceedance_95_predicted": 0.013916015625,
+      "joint_exceedance_95_observed": 0.0,
+      "joint_exceedance_95_absolute_error": 0.013916015625,
+      "brier_95": 0.00019365549087524414,
+      "joint_exceedance_99_predicted": 0.00067138671875,
+      "joint_exceedance_99_observed": 0.0,
+      "joint_exceedance_99_absolute_error": 0.00067138671875,
+      "brier_99": 4.507601261138916e-07,
+      "energy_score_loss_gdp": 0.005126575943114865,
+      "marginal_ks_uniform": [
+        6.102025508880615e-05,
+        6.102956831455231e-05,
+        6.103329360485077e-05,
+        6.1034224927425385e-05
+      ],
+      "max_uniform_coordinate": 0.999988691881299,
+      "deterministic_algorithm_runtime_ms": 1.3947499974165112
+    },
+    {
+      "model": "Gaussian Copula",
+      "fit_runtime_ms": 0.3218339988961816,
+      "tail_joint_log_likelihood": 15.605879815607773,
+      "tail_copula_log_likelihood": -0.2371929315249061,
+      "tail_test_observations": 3,
+      "pool_var_99_loss_gdp_sum": 0.12777068045774184,
+      "pool_var_995_loss_gdp_sum": 0.20960164854997387,
+      "pool_tvar_99_loss_gdp_sum": 0.4874945299907203,
+      "var_99_coverage_error": 0.01,
+      "tvar_99_calibration_moment_error": 0.7379033556331923,
+      "sample_runtime_ms": 3.2902079983614385,
+      "joint_exceedance_95_predicted": 0.023681640625,
+      "joint_exceedance_95_observed": 0.0,
+      "joint_exceedance_95_absolute_error": 0.023681640625,
+      "brier_95": 0.0005608201026916504,
+      "joint_exceedance_99_predicted": 0.0020751953125,
+      "joint_exceedance_99_observed": 0.0,
+      "joint_exceedance_99_absolute_error": 0.0020751953125,
+      "brier_99": 4.306435585021973e-06,
+      "energy_score_loss_gdp": 0.00513089256325024,
+      "marginal_ks_uniform": [
+        6.102025508880615e-05,
+        0.0011065511781498394,
+        0.0015673332607115675,
+        0.0017887940309796457
+      ],
+      "max_uniform_coordinate": 0.999988691881299,
+      "deterministic_algorithm_runtime_ms": 3.61204199725762,
+      "parameters": {
+        "correlation": [
+          [
+            1.0,
+            -0.3893523437977514,
+            0.15400737627000138,
+            -0.02931975738297922
+          ],
+          [
+            -0.3893523437977514,
+            1.0,
+            -0.15826614255285948,
+            0.5566027660799747
+          ],
+          [
+            0.15400737627000138,
+            -0.15826614255285948,
+            1.0,
+            -0.007841855357080757
+          ],
+          [
+            -0.02931975738297922,
+            0.5566027660799747,
+            -0.007841855357080757,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "model": "Student-t Copula",
+      "fit_runtime_ms": 4.643209002097137,
+      "tail_joint_log_likelihood": 15.582215441571178,
+      "tail_copula_log_likelihood": -0.26085730556150405,
+      "tail_test_observations": 3,
+      "pool_var_99_loss_gdp_sum": 0.1343845883929648,
+      "pool_var_995_loss_gdp_sum": 0.20925669898410953,
+      "pool_tvar_99_loss_gdp_sum": 0.5951705389116325,
+      "var_99_coverage_error": 0.01,
+      "tvar_99_calibration_moment_error": 0.7742082653507864,
+      "sample_runtime_ms": 12.78637500217883,
+      "joint_exceedance_95_predicted": 0.02496337890625,
+      "joint_exceedance_95_observed": 0.0,
+      "joint_exceedance_95_absolute_error": 0.02496337890625,
+      "brier_95": 0.0006231702864170074,
+      "joint_exceedance_99_predicted": 0.002197265625,
+      "joint_exceedance_99_observed": 0.0,
+      "joint_exceedance_99_absolute_error": 0.002197265625,
+      "brier_99": 4.827976226806641e-06,
+      "energy_score_loss_gdp": 0.0051244658951693535,
+      "marginal_ks_uniform": [
+        0.0007736333419736674,
+        0.00182713160839848,
+        0.0017726375944461525,
+        0.0020018242439456824
+      ],
+      "max_uniform_coordinate": 0.9999986496221022,
+      "deterministic_algorithm_runtime_ms": 17.429584004275966,
+      "parameters": {
+        "degrees_of_freedom": 29.999994460467608,
+        "correlation": [
+          [
+            1.0,
+            -0.3893523437977514,
+            0.15400737627000138,
+            -0.02931975738297922
+          ],
+          [
+            -0.3893523437977514,
+            1.0,
+            -0.15826614255285948,
+            0.5566027660799747
+          ],
+          [
+            0.15400737627000138,
+            -0.15826614255285948,
+            1.0,
+            -0.007841855357080757
+          ],
+          [
+            -0.02931975738297922,
+            0.5566027660799747,
+            -0.007841855357080757,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "model": "Clayton Copula",
+      "fit_runtime_ms": 0.16887499805307016,
+      "tail_joint_log_likelihood": 15.863093522333733,
+      "tail_copula_log_likelihood": 0.020020775201052537,
+      "tail_test_observations": 3,
+      "pool_var_99_loss_gdp_sum": 0.12483751778283614,
+      "pool_var_995_loss_gdp_sum": 0.19546626070549206,
+      "pool_tvar_99_loss_gdp_sum": 0.4369777059589482,
+      "var_99_coverage_error": 0.01,
+      "tvar_99_calibration_moment_error": 0.7143160484380318,
+      "sample_runtime_ms": 6.211125000845641,
+      "joint_exceedance_95_predicted": 0.01513671875,
+      "joint_exceedance_95_observed": 0.0,
+      "joint_exceedance_95_absolute_error": 0.01513671875,
+      "brier_95": 0.00022912025451660156,
+      "joint_exceedance_99_predicted": 0.0006103515625,
+      "joint_exceedance_99_observed": 0.0,
+      "joint_exceedance_99_absolute_error": 0.0006103515625,
+      "brier_99": 3.725290298461914e-07,
+      "energy_score_loss_gdp": 0.005102222258605035,
+      "marginal_ks_uniform": [
+        0.0009849816914494491,
+        0.0011062200509677766,
+        0.0012331176449235093,
+        0.0015330471989867256
+      ],
+      "max_uniform_coordinate": 0.9999729551627051,
+      "deterministic_algorithm_runtime_ms": 6.379999998898711,
+      "parameters": {
+        "theta": 0.07834707226959671
+      }
+    },
+    {
+      "model": "Gumbel Extreme-Value Copula",
+      "fit_runtime_ms": 0.620916995103471,
+      "tail_joint_log_likelihood": 15.843043252138225,
+      "tail_copula_log_likelihood": -2.9494994453630834e-05,
+      "tail_test_observations": 3,
+      "pool_var_99_loss_gdp_sum": 0.1234329550292057,
+      "pool_var_995_loss_gdp_sum": 0.19905630905966454,
+      "pool_tvar_99_loss_gdp_sum": 0.5461844194678007,
+      "var_99_coverage_error": 0.01,
+      "tvar_99_calibration_moment_error": 0.7740086486731383,
+      "sample_runtime_ms": 2.7257089968770742,
+      "joint_exceedance_95_predicted": 0.0142822265625,
+      "joint_exceedance_95_observed": 0.0,
+      "joint_exceedance_95_absolute_error": 0.0142822265625,
+      "brier_95": 0.00020398199558258057,
+      "joint_exceedance_99_predicted": 0.00042724609375,
+      "joint_exceedance_99_observed": 0.0,
+      "joint_exceedance_99_absolute_error": 0.00042724609375,
+      "brier_99": 1.825392246246338e-07,
+      "energy_score_loss_gdp": 0.005125635338594364,
+      "marginal_ks_uniform": [
+        0.00022010948170325673,
+        0.0002699961013756247,
+        0.00029517799624367846,
+        0.00024829265724030103
+      ],
+      "max_uniform_coordinate": 0.9999892210741448,
+      "deterministic_algorithm_runtime_ms": 3.3466259919805452,
+      "parameters": {
+        "theta": 1.0000160877365851
+      }
+    },
+    {
+      "model": "Regular Vine",
+      "fit_runtime_ms": 8.949542003392708,
+      "tail_joint_log_likelihood": 15.832073613864742,
+      "tail_copula_log_likelihood": -0.010999133267940553,
+      "tail_test_observations": 3,
+      "pool_var_99_loss_gdp_sum": 0.12215884416341874,
+      "pool_var_995_loss_gdp_sum": 0.2108586273472843,
+      "pool_tvar_99_loss_gdp_sum": 0.48730821008456776,
+      "var_99_coverage_error": 0.01,
+      "tvar_99_calibration_moment_error": 0.7493191338963502,
+      "sample_runtime_ms": 30.350415996508673,
+      "joint_exceedance_95_predicted": 0.0181884765625,
+      "joint_exceedance_95_observed": 0.0,
+      "joint_exceedance_95_absolute_error": 0.0181884765625,
+      "brier_95": 0.0003308206796646118,
+      "joint_exceedance_99_predicted": 0.00152587890625,
+      "joint_exceedance_99_observed": 0.0,
+      "joint_exceedance_99_absolute_error": 0.00152587890625,
+      "brier_99": 2.3283064365386963e-06,
+      "energy_score_loss_gdp": 0.005152272871461515,
+      "marginal_ks_uniform": [
+        6.102025508880615e-05,
+        0.001025961508275941,
+        6.103329360485077e-05,
+        0.001602527457671421
+      ],
+      "max_uniform_coordinate": 0.999988691881299,
+      "deterministic_algorithm_runtime_ms": 39.29995799990138,
+      "parameters": {
+        "summary": "<pyvinecopulib.core.Vinecop> Vinecop model with 4 variables\ntree edge conditioned variables conditioning variables var_types       family rotation parameters  df   tau \n   1    1                  4, 2                             c, c       Gumbel      180       1.73 1.0  0.42 \n   1    2                  3, 2                             c, c Independence                          0.00 \n   1    3                  2, 1                             c, c        Frank        0      -3.13 1.0 -0.32 \n   2    1                  4, 1                      2      c, c Independence                          0.00 \n   2    2                  3, 1                      2      c, c Independence                          0.00 \n   3    1                  4, 3                   1, 2      c, c Independence                          0.00 \n"
+      }
+    },
+    {
+      "model": "Naive Discretized QCBM Copula",
+      "fit_runtime_ms": 34.95683299843222,
+      "tail_joint_log_likelihood": null,
+      "tail_copula_log_likelihood": null,
+      "tail_test_observations": 3,
+      "pool_var_99_loss_gdp_sum": 0.01018135265,
+      "pool_var_995_loss_gdp_sum": 0.01018135265,
+      "pool_tvar_99_loss_gdp_sum": 0.010181352650000001,
+      "var_99_coverage_error": 0.29,
+      "tvar_99_calibration_moment_error": 30.732342072445554,
+      "sample_runtime_ms": 0.9192500001518056,
+      "joint_exceedance_95_predicted": 0.0,
+      "joint_exceedance_95_observed": 0.0,
+      "joint_exceedance_95_absolute_error": 0.0,
+      "brier_95": 0.0,
+      "joint_exceedance_99_predicted": 0.0,
+      "joint_exceedance_99_observed": 0.0,
+      "joint_exceedance_99_absolute_error": 0.0,
+      "brier_99": 0.0,
+      "energy_score_loss_gdp": 0.006030839333947226,
+      "marginal_ks_uniform": [
+        0.65716552734375,
+        0.65716552734375,
+        0.65716552734375,
+        0.65716552734375
+      ],
+      "max_uniform_coordinate": 0.6875,
+      "deterministic_algorithm_runtime_ms": 35.876082998584025,
+      "circuit": {
+        "qubits": 12,
+        "bits_per_country": 3,
+        "layers": 2,
+        "max_marginal_uniform_support": 0.9375,
+        "continuous_density": "atomic measure; continuous likelihood is undefined",
+        "trained": true,
+        "training_nll": 27.631021115928547,
+        "optimization_evaluations": 73,
+        "parameters": [
+          1.9207963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966,
+          1.5707963267948966
+        ]
+      }
+    },
+    {
+      "model": "MPS-EV-Cumulant Copula",
+      "fit_runtime_ms": 16.17279199854238,
+      "tail_joint_log_likelihood": 15.66096734772313,
+      "tail_copula_log_likelihood": -0.18210539940954987,
+      "tail_test_observations": 3,
+      "pool_var_99_loss_gdp_sum": 0.12754008977954437,
+      "pool_var_995_loss_gdp_sum": 0.2034380370342659,
+      "pool_tvar_99_loss_gdp_sum": 0.6094243973860665,
+      "var_99_coverage_error": 0.01,
+      "tvar_99_calibration_moment_error": 0.7907204071143406,
+      "sample_runtime_ms": 4.249042001902126,
+      "joint_exceedance_95_predicted": 0.01361083984375,
+      "joint_exceedance_95_observed": 0.0,
+      "joint_exceedance_95_absolute_error": 0.01361083984375,
+      "brier_95": 0.00018525496125221252,
+      "joint_exceedance_99_predicted": 0.00091552734375,
+      "joint_exceedance_99_observed": 0.0,
+      "joint_exceedance_99_absolute_error": 0.00091552734375,
+      "brier_99": 8.381903171539307e-07,
+      "energy_score_loss_gdp": 0.005123837169644048,
+      "marginal_ks_uniform": [
+        0.0007261037826538086,
+        0.0013538298662751913,
+        0.001236593583598733,
+        0.0008513201028108597
+      ],
+      "max_uniform_coordinate": 0.9999994311947376,
+      "deterministic_algorithm_runtime_ms": 20.421834000444505,
+      "parameters": {
+        "dimension": 4,
+        "bins": 4,
+        "rank": 4,
+        "cumulant_penalty": 0.1,
+        "component_order": [
+          "Clayton",
+          "MPS checkerboard",
+          "continuous Gumbel EV"
+        ],
+        "weights": [
+          0.0,
+          0.9899999999999998,
+          0.010000000000000153
+        ],
+        "clayton_theta": 0.07834707226959671,
+        "gumbel_theta": 1.05,
+        "gumbel_theta_unconstrained_training_mle": 1.0000160877365851,
+        "mps_weights": [
+          0.29129208367438414,
+          0.432512856291543,
+          6.404391733168477e-08,
+          0.2761949959901555
+        ],
+        "mps_factors": [
+          [
+            [
+              0.12175153212718395,
+              0.16649061860795294,
+              0.5927090166240414,
+              0.11904883264082168
+            ],
+            [
+              0.3796265455220373,
+              0.3406772505628285,
+              0.18642860282342189,
+              0.09326760109171224
+            ],
+            [
+              0.38109560473259296,
+              0.10349920293832797,
+              0.09987486712320033,
+              0.4155303252058786
+            ],
+            [
+              0.6250739540239252,
+              0.12230691401097461,
+              0.09783254734690201,
+              0.15478658461819814
+            ]
+          ],
+          [
+            [
+              0.18683775030771047,
+              0.3896200797815606,
+              0.07363434813014379,
+              0.34990782178058505
+            ],
+            [
+              0.2441971886202586,
+              0.27507939508872803,
+              0.2697879818352332,
+              0.2109354344557801
+            ],
+            [
+              0.12910924778623709,
+              0.33708438375801625,
+              0.3020872835786573,
+              0.2317190848770893
+            ],
+            [
+              0.08499645531207924,
+              0.40785010480349376,
+              0.41725302606855236,
+              0.08990041381587469
+            ]
+          ],
+          [
+            [
+              0.2801843059593229,
+              0.24904756674115305,
+              0.2126247535896275,
+              0.25814337370989654
+            ],
+            [
+              0.2554795023998464,
+              0.2494103705071047,
+              0.27290777902213453,
+              0.2222023480709144
+            ],
+            [
+              0.2633425284651528,
+              0.2553697492699781,
+              0.2461184986915949,
+              0.23516922357327424
+            ],
+            [
+              0.23657046235218543,
+              0.2803138577704902,
+              0.26344367295547017,
+              0.21967200692185412
+            ]
+          ],
+          [
+            [
+              0.48416878460794655,
+              0.11943334147076211,
+              0.16474136152833557,
+              0.23165651239295582
+            ],
+            [
+              0.12237496376495405,
+              0.11509268246928706,
+              0.2860588963570731,
+              0.4764734574086858
+            ],
+            [
+              0.30104977290063883,
+              0.2681372096066579,
+              0.32676403818643257,
+              0.10404897930627087
+            ],
+            [
+              0.11281460968363181,
+              0.1374845055178014,
+              0.14857198376051187,
+              0.6011289010380548
+            ]
+          ]
+        ]
+      },
+      "frozen_parameter_sha256": "e7896f02cd90d31e0c37cf6c2707e2a32834124715635dd1cd640a8af04127ce",
+      "invariants": {
+        "uniform_marginal_cdf_max_errors": [
+          8.881784197001252e-16,
+          7.216449660063518e-16,
+          9.992007221626409e-16,
+          1.1102230246251565e-16
+        ],
+        "marginal_max_absolute_mass_error": 8.792966355031238e-16,
+        "gpd_tail_roundtrip_max_errors": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "positive_upper_tail_dependence": 0.0006493644295221778,
+        "EV_weight_at_structural_lower_bound": true,
+        "EV_theta_at_structural_lower_bound": true,
+        "positive_tail_interpretation": "Positive asymptotic dependence is a declared structural constraint. The estimated coefficient does not establish historical evidence for a nonzero limiting coefficient.",
+        "upper_tail_formula": "lambda_U = w_EV * (2 - 2^(1/theta_EV))",
+        "upper_tail_proof": "Mixture probability is linear; Clayton and finite checkerboard pair tails have zero limiting ratio; the continuous Gumbel pair tail has coefficient 2 - 2^(1/theta).",
+        "marginal_proof": "All components have exactly uniform marginal CDFs. A convex mixture preserves each marginal. Inverse fitted GPD transforms preserve the same S1 fitted loss marginals.",
+        "hybrid_scope": "The checkerboard body has a finite nonnegative MPS. The continuous EV microkernel is evaluated analytically and is not claimed to have exact finite TT rank.",
+        "mps_bond_dimension": 4,
+        "mps_tt_core_shapes": [
+          [
+            1,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            1
+          ]
+        ],
+        "mps_ipf_iterations": 15,
+        "cumulant_training_centered_target": [
+          0.00988109171363359
+        ],
+        "cumulant_model_moment_estimate": [
+          -0.003241048241188608
+        ],
+        "cumulant_generated_estimate": [
+          -0.008645387596815986
+        ],
+        "cumulant_domain": "centered bounded PIT coordinates; loss fourth moments are not required",
+        "cumulant_component_moment_integration_n": 16384,
+        "cumulant_mixture_algebra": "K1234 = sum(w E[z1z2z3z4]) - sum_pairings(sum(w E[zazb]) * sum(w E[zczd]))"
+      }
+    }
+  ],
+  "mps_vs_baselines": {
+    "Independent": {
+      "tail_joint_log_likelihood": "loss",
+      "joint_exceedance_95_absolute_error": "win",
+      "joint_exceedance_99_absolute_error": "loss",
+      "var_99_coverage_error": "tie",
+      "tvar_99_calibration_moment_error": "loss",
+      "brier_95": "win",
+      "energy_score_loss_gdp": "win"
+    },
+    "Gaussian Copula": {
+      "tail_joint_log_likelihood": "win",
+      "joint_exceedance_95_absolute_error": "win",
+      "joint_exceedance_99_absolute_error": "win",
+      "var_99_coverage_error": "tie",
+      "tvar_99_calibration_moment_error": "loss",
+      "brier_95": "win",
+      "energy_score_loss_gdp": "win"
+    },
+    "Student-t Copula": {
+      "tail_joint_log_likelihood": "win",
+      "joint_exceedance_95_absolute_error": "win",
+      "joint_exceedance_99_absolute_error": "win",
+      "var_99_coverage_error": "tie",
+      "tvar_99_calibration_moment_error": "loss",
+      "brier_95": "win",
+      "energy_score_loss_gdp": "win"
+    },
+    "Clayton Copula": {
+      "tail_joint_log_likelihood": "loss",
+      "joint_exceedance_95_absolute_error": "win",
+      "joint_exceedance_99_absolute_error": "loss",
+      "var_99_coverage_error": "tie",
+      "tvar_99_calibration_moment_error": "loss",
+      "brier_95": "win",
+      "energy_score_loss_gdp": "loss"
+    },
+    "Gumbel Extreme-Value Copula": {
+      "tail_joint_log_likelihood": "loss",
+      "joint_exceedance_95_absolute_error": "win",
+      "joint_exceedance_99_absolute_error": "loss",
+      "var_99_coverage_error": "tie",
+      "tvar_99_calibration_moment_error": "loss",
+      "brier_95": "win",
+      "energy_score_loss_gdp": "win"
+    },
+    "Regular Vine": {
+      "tail_joint_log_likelihood": "loss",
+      "joint_exceedance_95_absolute_error": "win",
+      "joint_exceedance_99_absolute_error": "win",
+      "var_99_coverage_error": "tie",
+      "tvar_99_calibration_moment_error": "loss",
+      "brier_95": "win",
+      "energy_score_loss_gdp": "win"
+    },
+    "Naive Discretized QCBM Copula": {
+      "tail_joint_log_likelihood": "not_comparable",
+      "joint_exceedance_95_absolute_error": "loss",
+      "joint_exceedance_99_absolute_error": "loss",
+      "var_99_coverage_error": "win",
+      "tvar_99_calibration_moment_error": "win",
+      "brier_95": "loss",
+      "energy_score_loss_gdp": "win"
+    }
+  },
+  "wins_by_metric": {
+    "tail_joint_log_likelihood": {
+      "win": 2,
+      "loss": 4,
+      "tie": 0,
+      "not_comparable": 1
+    },
+    "joint_exceedance_95_absolute_error": {
+      "win": 6,
+      "loss": 1,
+      "tie": 0,
+      "not_comparable": 0
+    },
+    "joint_exceedance_99_absolute_error": {
+      "win": 3,
+      "loss": 4,
+      "tie": 0,
+      "not_comparable": 0
+    },
+    "var_99_coverage_error": {
+      "win": 1,
+      "loss": 0,
+      "tie": 6,
+      "not_comparable": 0
+    },
+    "tvar_99_calibration_moment_error": {
+      "win": 1,
+      "loss": 6,
+      "tie": 0,
+      "not_comparable": 0
+    },
+    "brier_95": {
+      "win": 6,
+      "loss": 1,
+      "tie": 0,
+      "not_comparable": 0
+    },
+    "energy_score_loss_gdp": {
+      "win": 6,
+      "loss": 1,
+      "tie": 0,
+      "not_comparable": 0
+    }
+  },
+  "allwin": {
+    "strict_all_baseline_metric_wins": 0,
+    "total_core_metrics": 7,
+    "strict_allwin_achieved": false,
+    "comparison_rule": "strict improvement over all seven baselines at tolerance 1e-12; ties and undefined likelihood are separate outcomes",
+    "finite_sample_obstruction": "Heldout joint95 and joint99 counts are zero. The naive QCBM predicts exactly zero and has zero absolute error, so no model can attain a strictly smaller nonnegative error. Its continuous density is undefined. VaR coverage also has unavoidable finite sample ties."
+  },
+  "s1_mps_comparison": {
+    "tail_joint_log_likelihood": {
+      "s1": 15.659791733527413,
+      "s2": 15.66096734772313,
+      "signed_improvement": 0.0011756141957164346
+    },
+    "joint_exceedance_95_absolute_error": {
+      "s1": 0.01336669921875,
+      "s2": 0.01361083984375,
+      "signed_improvement": -0.000244140625
+    },
+    "joint_exceedance_99_absolute_error": {
+      "s1": 0.00042724609375,
+      "s2": 0.00091552734375,
+      "signed_improvement": -0.00048828125
+    },
+    "var_99_coverage_error": {
+      "s1": 0.01,
+      "s2": 0.01,
+      "signed_improvement": -0.0
+    },
+    "tvar_99_calibration_moment_error": {
+      "s1": 0.7139507514384142,
+      "s2": 0.7907204071143406,
+      "signed_improvement": -0.07676965567592631
+    },
+    "brier_95": {
+      "s1": 0.00017866864800453186,
+      "s2": 0.00018525496125221252,
+      "signed_improvement": -6.586313247680664e-06
+    },
+    "energy_score_loss_gdp": {
+      "s1": 0.005123408736581472,
+      "s2": 0.005123837169644048,
+      "signed_improvement": -4.284330625756172e-07
+    }
+  },
+  "protected_s1_sha256": {
+    "src/probe_s1_baselines.py": "9125c107d39dcabad18338f0e966cd3abba4ded4ebf1772ec4167ed172de54a5",
+    "src/probe_official_s1.py": "20abeddd4dcf5518403bf541f9da175cbc4833dc4a5cb55c2c1a0a4746cf0b2c",
+    "src/verify_probe_s1.py": "9a362ab65cdb5711947057a5df4e97012e34b2689744cf41ff72918568c918bd",
+    "data/probe_s1_results.json": "8a46baadb49487fdc82c0cbb84fa4937c239f93dc70400f553d08eaa2e06cb3a",
+    "data/mps_s1_operator.npz": "92dc5646ccc0963a980cc40953303153cd46ce38eff897b0f020353ae6f39b23",
+    "data/probe_official_s1_results.json": "bcbc59dcc6aa4c1b1cfc4b8e532699b91b02612a2ebbf2cbd843b3012d1e419c",
+    "data/processed/loss_gdp_panel.csv": "3b7b463fee711e4c1b1080908b51d9bc977c67d7b55551a1ed78838866048e71"
+  },
+  "protected_s1_unchanged": true,
+  "environment": {
+    "python": "3.13.14",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "numpy": "2.5.5",
+    "scipy": "1.18.1",
+    "pyvinecopulib": "1.0.1"
+  }
+}

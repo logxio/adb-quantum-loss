@@ -1,0 +1,993 @@
+{
+  "schema": "adb.s4.qjlb.v1",
+  "protocol": "evaluation-v1",
+  "qjlb_version": "0.5.0",
+  "repeats": 10,
+  "samples": 8192,
+  "primary_suite": "data/s4/suite-13",
+  "primary_holdout_seed": 20261122,
+  "public_case_count": 7,
+  "private_case_count": 6,
+  "solver": {
+    "path": "team_solver.py",
+    "bytes": 21536,
+    "sha256": "56bba0eecdfa5c0debe2616890acd25175718419f9adfd5925fc9bcc346f7cba"
+  },
+  "modes": {
+    "exact": {
+      "report": "data/s4/evaluation-suite-13-exact/report.json",
+      "sha256": "3ddfba7c92b734968357bbe6124a79536b038c25c453e0015fc5128d2a36be7a",
+      "pass_cases": 13,
+      "case_count": 13,
+      "all_cases_pass": true,
+      "tracks": {
+        "adb_drb": {
+          "all_cases_pass": true,
+          "geometric_time_ratio": 0.06783271401806044
+        },
+        "worldbank_elt": {
+          "all_cases_pass": true,
+          "geometric_time_ratio": 0.1280844254905866
+        }
+      },
+      "max_normalised_rmse": 3.261038259168539e-12,
+      "protocol_eligible": true,
+      "verification": "code_review_required",
+      "timing_scope": "Fresh process: startup, loading, preparation, execution and result writing. Input staging and evaluator scoring excluded for every method.",
+      "per_case": [
+        {
+          "case": "case-001",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.14032727100016018,
+          "time_ratio": 0.08872974846304335
+        },
+        {
+          "case": "case-002",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.3627601250000225,
+          "time_ratio": 0.17293848810884052
+        },
+        {
+          "case": "case-003",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.09515183300004537,
+          "time_ratio": 0.04699633856062865
+        },
+        {
+          "case": "case-004",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.35844987549990037,
+          "time_ratio": 0.0742295706766437
+        },
+        {
+          "case": "case-005",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.10781087550003576,
+          "time_ratio": 0.0466409579260572
+        },
+        {
+          "case": "case-006",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.23294820849991993,
+          "time_ratio": 0.09831536057881221
+        },
+        {
+          "case": "adb-base",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.07622420850020717,
+          "time_ratio": 0.06138286089799132
+        },
+        {
+          "case": "adb-common-shock",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.07504310400008762,
+          "time_ratio": 0.07359432761220495
+        },
+        {
+          "case": "adb-independent",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.07857910400025503,
+          "time_ratio": 0.08417416044503491
+        },
+        {
+          "case": "adb-rain-cover",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.08173618750015521,
+          "time_ratio": 0.07538583403003657
+        },
+        {
+          "case": "adb-rain-stress",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.07659960400019372,
+          "time_ratio": 0.08039940025535214
+        },
+        {
+          "case": "kaz-kgz-base",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.1875934170002438,
+          "time_ratio": 0.14757020890716246
+        },
+        {
+          "case": "tjk-uzb-base",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.18835881249970043,
+          "time_ratio": 0.1850942587839617
+        }
+      ]
+    },
+    "sample": {
+      "report": "data/s4/evaluation-suite-13-sample/report.json",
+      "sha256": "456daa57d42831b4f7341c8e63b93778ab4a34f7d55ed47e457c31106fa15e92",
+      "pass_cases": 13,
+      "case_count": 13,
+      "all_cases_pass": true,
+      "tracks": {
+        "adb_drb": {
+          "all_cases_pass": true,
+          "geometric_time_ratio": 1.034221196841912
+        },
+        "worldbank_elt": {
+          "all_cases_pass": true,
+          "geometric_time_ratio": 0.23720587116071115
+        }
+      },
+      "max_normalised_rmse": 0.2905543343056876,
+      "protocol_eligible": true,
+      "verification": "code_review_required",
+      "timing_scope": "Fresh process: startup, loading, preparation, execution and result writing. Input staging and evaluator scoring excluded for every method.",
+      "per_case": [
+        {
+          "case": "case-001",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.623925604500073,
+          "time_ratio": 1.0109946626410273
+        },
+        {
+          "case": "case-002",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.24144658299974253,
+          "time_ratio": 0.28936823566939135
+        },
+        {
+          "case": "case-003",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.8226405625000552,
+          "time_ratio": 1.1780808603752275
+        },
+        {
+          "case": "case-004",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.19031927049945807,
+          "time_ratio": 0.1790416987851208
+        },
+        {
+          "case": "case-005",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.7270355420005217,
+          "time_ratio": 1.3409142879777654
+        },
+        {
+          "case": "case-006",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.2677802710004471,
+          "time_ratio": 0.28720166757927756
+        },
+        {
+          "case": "adb-base",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.7634354584997709,
+          "time_ratio": 0.8513427130763639
+        },
+        {
+          "case": "adb-common-shock",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.7228045835004195,
+          "time_ratio": 1.0801109933739803
+        },
+        {
+          "case": "adb-independent",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.5634387915001753,
+          "time_ratio": 0.7664460244192317
+        },
+        {
+          "case": "adb-rain-cover",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.7722209164999185,
+          "time_ratio": 1.383787505017285
+        },
+        {
+          "case": "adb-rain-stress",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.580377583000427,
+          "time_ratio": 0.8403470989117592
+        },
+        {
+          "case": "kaz-kgz-base",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.18691704199954984,
+          "time_ratio": 0.2397343629393524
+        },
+        {
+          "case": "tjk-uzb-base",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.24314000000003944,
+          "time_ratio": 0.21052558281484662
+        }
+      ]
+    },
+    "hybrid": {
+      "report": "data/s4/evaluation-suite-13-hybrid/report.json",
+      "sha256": "76c9a6b3f57001f21db14c659aa0c33fe15ae8e6278cbbd2283f9151583d9789",
+      "pass_cases": 13,
+      "case_count": 13,
+      "all_cases_pass": true,
+      "tracks": {
+        "adb_drb": {
+          "all_cases_pass": true,
+          "geometric_time_ratio": 0.24014986968880878
+        },
+        "worldbank_elt": {
+          "all_cases_pass": true,
+          "geometric_time_ratio": 0.2267887169739532
+        }
+      },
+      "max_normalised_rmse": 1.6484856788119123e-10,
+      "protocol_eligible": true,
+      "verification": "evidence_review_required",
+      "timing_scope": "Fresh process: startup, loading, preparation, execution and result writing. Input staging and evaluator scoring excluded for every method.",
+      "per_case": [
+        {
+          "case": "case-001",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.16358408350060927,
+          "time_ratio": 0.21832494161928967
+        },
+        {
+          "case": "case-002",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.2338211664996379,
+          "time_ratio": 0.22839989513870346
+        },
+        {
+          "case": "case-003",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.19589797849994284,
+          "time_ratio": 0.24768910460914165
+        },
+        {
+          "case": "case-004",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.19247704149984202,
+          "time_ratio": 0.18988036812802792
+        },
+        {
+          "case": "case-005",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.18356237500029238,
+          "time_ratio": 0.26470598832267195
+        },
+        {
+          "case": "case-006",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.2487457289998929,
+          "time_ratio": 0.22279365219748967
+        },
+        {
+          "case": "adb-base",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.14173156249989916,
+          "time_ratio": 0.17672069552971256
+        },
+        {
+          "case": "adb-common-shock",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.16026266700009728,
+          "time_ratio": 0.23536213441140522
+        },
+        {
+          "case": "adb-independent",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.1375592289996348,
+          "time_ratio": 0.2164072732003225
+        },
+        {
+          "case": "adb-rain-cover",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.13320949950002614,
+          "time_ratio": 0.25488355355918224
+        },
+        {
+          "case": "adb-rain-stress",
+          "track": "adb_drb",
+          "pass": true,
+          "median_seconds": 0.189308353999877,
+          "time_ratio": 0.3368582190129587
+        },
+        {
+          "case": "kaz-kgz-base",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.3493818960000681,
+          "time_ratio": 0.2887820927274325
+        },
+        {
+          "case": "tjk-uzb-base",
+          "track": "worldbank_elt",
+          "pass": true,
+          "median_seconds": 0.3150591245002943,
+          "time_ratio": 0.2150097642282682
+        }
+      ]
+    }
+  },
+  "official_baselines": {
+    "exact": {
+      "pass_cases": 13,
+      "case_count": 13,
+      "max_normalised_rmse": 0.0
+    },
+    "mc": {
+      "pass_cases": 0,
+      "case_count": 13,
+      "max_normalised_rmse": 37.54616456718013
+    },
+    "qmc": {
+      "pass_cases": 0,
+      "case_count": 13,
+      "max_normalised_rmse": 71.56928311056366
+    },
+    "stratified": {
+      "pass_cases": 1,
+      "case_count": 13,
+      "max_normalised_rmse": 103.50674817809117
+    },
+    "importance": {
+      "pass_cases": 0,
+      "case_count": 13,
+      "max_normalised_rmse": 10.9638212085781
+    }
+  },
+  "additional_holdouts": {
+    "holdout-20261123": {
+      "exact": {
+        "pass_cases": 6,
+        "case_count": 6,
+        "repeats": 10,
+        "samples": 8192
+      },
+      "sample": {
+        "pass_cases": 6,
+        "case_count": 6,
+        "repeats": 10,
+        "samples": 8192
+      },
+      "hybrid": {
+        "pass_cases": 6,
+        "case_count": 6,
+        "repeats": 10,
+        "samples": 8192
+      }
+    },
+    "holdout-20261124": {
+      "exact": {
+        "pass_cases": 6,
+        "case_count": 6,
+        "repeats": 10,
+        "samples": 8192
+      },
+      "sample": {
+        "pass_cases": 6,
+        "case_count": 6,
+        "repeats": 10,
+        "samples": 8192
+      },
+      "hybrid": {
+        "pass_cases": 6,
+        "case_count": 6,
+        "repeats": 10,
+        "samples": 8192
+      }
+    }
+  },
+  "scientific_findings": {
+    "finding_a": {
+      "coupling_scope": "Earthquake common-rate multiplier varies; rain common share fixed at 0.25.",
+      "interpretation": "Mean loss is invariant to earthquake coupling at each horizon; caps create nonlinear horizon dependence in joint exhaustion and stop loss. This is a smooth finite-state transition, not a singular thermodynamic phase transition.",
+      "rows": [
+        {
+          "years": 1,
+          "earthquake_common_rate_multiplier": 0,
+          "precipitation_common_rate_share": 0.25,
+          "values": {
+            "term_expected_principal_loss_usd": 3415425.0000000023,
+            "term_joint_attachment_probability": 0.007884745412644728,
+            "term_portfolio_loss_exceedance_probability": 0.0009179580054763797,
+            "term_portfolio_stop_loss_usd": 19529.23454476382,
+            "term_both_bonds_exhausted_probability": 6.499268081436309e-07
+          }
+        },
+        {
+          "years": 1,
+          "earthquake_common_rate_multiplier": 1,
+          "precipitation_common_rate_share": 0.25,
+          "values": {
+            "term_expected_principal_loss_usd": 3415425.0000000033,
+            "term_joint_attachment_probability": 0.010533060113445692,
+            "term_portfolio_loss_exceedance_probability": 0.002387580695225189,
+            "term_portfolio_stop_loss_usd": 53691.48725927893,
+            "term_both_bonds_exhausted_probability": 1.879487424597577e-06
+          }
+        },
+        {
+          "years": 1,
+          "earthquake_common_rate_multiplier": 2,
+          "precipitation_common_rate_share": 0.25,
+          "values": {
+            "term_expected_principal_loss_usd": 3415425.0000000037,
+            "term_joint_attachment_probability": 0.013189243151199879,
+            "term_portfolio_loss_exceedance_probability": 0.00385576544063428,
+            "term_portfolio_stop_loss_usd": 87843.04332595068,
+            "term_both_bonds_exhausted_probability": 3.1092713729030226e-06
+          }
+        },
+        {
+          "years": 3,
+          "earthquake_common_rate_multiplier": 0,
+          "precipitation_common_rate_share": 0.25,
+          "values": {
+            "term_expected_principal_loss_usd": 10063513.348954113,
+            "term_joint_attachment_probability": 0.03780646726046638,
+            "term_portfolio_loss_exceedance_probability": 0.008018058639452565,
+            "term_portfolio_stop_loss_usd": 179587.6825714284,
+            "term_both_bonds_exhausted_probability": 1.9268983967745782e-05
+          }
+        },
+        {
+          "years": 3,
+          "earthquake_common_rate_multiplier": 1,
+          "precipitation_common_rate_share": 0.25,
+          "values": {
+            "term_expected_principal_loss_usd": 10063513.34895411,
+            "term_joint_attachment_probability": 0.044137768730843706,
+            "term_portfolio_loss_exceedance_probability": 0.012046720907534048,
+            "term_portfolio_stop_loss_usd": 282354.6985661411,
+            "term_both_bonds_exhausted_probability": 3.163304630917947e-05
+          }
+        },
+        {
+          "years": 3,
+          "earthquake_common_rate_multiplier": 2,
+          "precipitation_common_rate_share": 0.25,
+          "values": {
+            "term_expected_principal_loss_usd": 10063513.34895411,
+            "term_joint_attachment_probability": 0.05052567031293339,
+            "term_portfolio_loss_exceedance_probability": 0.01606640998669062,
+            "term_portfolio_stop_loss_usd": 385043.37022346805,
+            "term_both_bonds_exhausted_probability": 4.400154217606984e-05
+          }
+        },
+        {
+          "years": 10,
+          "earthquake_common_rate_multiplier": 0,
+          "precipitation_common_rate_share": 0.25,
+          "values": {
+            "term_expected_principal_loss_usd": 31486318.788892116,
+            "term_joint_attachment_probability": 0.21928843750035587,
+            "term_portfolio_loss_exceedance_probability": 0.07868174412931254,
+            "term_portfolio_stop_loss_usd": 2062243.3042898302,
+            "term_both_bonds_exhausted_probability": 0.0009017282885096977
+          }
+        },
+        {
+          "years": 10,
+          "earthquake_common_rate_multiplier": 1,
+          "precipitation_common_rate_share": 0.25,
+          "values": {
+            "term_expected_principal_loss_usd": 31486318.788892057,
+            "term_joint_attachment_probability": 0.22882274791676172,
+            "term_portfolio_loss_exceedance_probability": 0.08783531695171866,
+            "term_portfolio_stop_loss_usd": 2382658.869161706,
+            "term_both_bonds_exhausted_probability": 0.0010788640529125323
+          }
+        },
+        {
+          "years": 10,
+          "earthquake_common_rate_multiplier": 2,
+          "precipitation_common_rate_share": 0.25,
+          "values": {
+            "term_expected_principal_loss_usd": 31486318.78889208,
+            "term_joint_attachment_probability": 0.23864414713146503,
+            "term_portfolio_loss_exceedance_probability": 0.09698253288659657,
+            "term_portfolio_stop_loss_usd": 2702995.623019301,
+            "term_both_bonds_exhausted_probability": 0.0012560418355170783
+          }
+        }
+      ]
+    },
+    "finding_b": {
+      "comparison_scope": "Nested country sets with identical per-country layers and threshold equal to half total limits.",
+      "interpretation": "Joint means positive payment in every selected country. Finite catalogue zeros are actual reference values. They do not establish independence or diversified tail protection outside this catalogue.",
+      "pools": [
+        {
+          "countries": [
+            "KAZ",
+            "KGZ"
+          ],
+          "config": {
+            "schema_version": 2,
+            "track": "worldbank_elt",
+            "dataset_directory": "../data",
+            "countries": [
+              "KAZ",
+              "KGZ"
+            ],
+            "peril_order": [
+              "seismic",
+              "flood"
+            ],
+            "attachment_usd": [
+              [
+                250000000.0,
+                250000000.0
+              ],
+              [
+                150000000.0,
+                150000000.0
+              ]
+            ],
+            "exhaustion_usd": [
+              [
+                1000000000.0,
+                1000000000.0
+              ],
+              [
+                400000000.0,
+                400000000.0
+              ]
+            ],
+            "limit_usd": [
+              80000000.0,
+              80000000.0
+            ],
+            "portfolio_threshold_usd": 80000000.0,
+            "contract_note": "Synthetic loss-based payments per row, with fixed conditional mean losses and no annual or term cap."
+          },
+          "rows": 421968,
+          "active_rows": 5795,
+          "active_percent": 1.3733268873469078,
+          "values": {
+            "annual_economic_loss_usd": 1802984588.9189265,
+            "annual_layer_payment_usd": 94261849.48202565,
+            "joint_layer_exceedance_rate_per_year": 0.12500027500000008,
+            "portfolio_layer_exceedance_rate_per_year": 0.12160013000000008,
+            "annual_layer_stop_loss_usd": 1236767.1065728
+          },
+          "perils": [
+            {
+              "peril": "seismic",
+              "rows": 419968,
+              "active_rows": 3795,
+              "active_percent": 0.9036402773544651,
+              "joint_rows": 55,
+              "portfolio_exceedance_rows": 26,
+              "annual_rate": 41.99889984,
+              "values": {
+                "annual_economic_loss_usd": 542278927.1189262,
+                "annual_layer_payment_usd": 13232862.122025609,
+                "joint_layer_exceedance_rate_per_year": 0.005500274999999999,
+                "portfolio_layer_exceedance_rate_per_year": 0.002600129999999999,
+                "annual_layer_stop_loss_usd": 81548.86657279999
+              }
+            },
+            {
+              "peril": "flood",
+              "rows": 2000,
+              "active_rows": 2000,
+              "active_percent": 100.0,
+              "joint_rows": 239,
+              "portfolio_exceedance_rows": 238,
+              "annual_rate": 1.0000000000000004,
+              "values": {
+                "annual_economic_loss_usd": 1260705661.8,
+                "annual_layer_payment_usd": 81028987.36000004,
+                "joint_layer_exceedance_rate_per_year": 0.11950000000000009,
+                "portfolio_layer_exceedance_rate_per_year": 0.11900000000000009,
+                "annual_layer_stop_loss_usd": 1155218.2399999998
+              }
+            }
+          ],
+          "iid_expected_nonzero_counts_at_8192": {
+            "annual_economic_loss_usd": 6609.605126042586,
+            "annual_layer_payment_usd": 262.8211299649968,
+            "joint_layer_exceedance_rate_per_year": 23.814615178768243,
+            "portfolio_layer_exceedance_rate_per_year": 23.16683144607636,
+            "annual_layer_stop_loss_usd": 23.16683144607636
+          },
+          "iid_zero_observation_probability_at_8192": {
+            "annual_economic_loss_usd": 0.0,
+            "annual_layer_payment_usd": 9.707755811849511e-117,
+            "joint_layer_exceedance_rate_per_year": 4.389162278282133e-11,
+            "portfolio_layer_exceedance_rate_per_year": 8.404648885554082e-11,
+            "annual_layer_stop_loss_usd": 8.404648885554082e-11
+          }
+        },
+        {
+          "countries": [
+            "KAZ",
+            "KGZ",
+            "TJK"
+          ],
+          "config": {
+            "schema_version": 2,
+            "track": "worldbank_elt",
+            "dataset_directory": "../data",
+            "countries": [
+              "KAZ",
+              "KGZ",
+              "TJK"
+            ],
+            "peril_order": [
+              "seismic",
+              "flood"
+            ],
+            "attachment_usd": [
+              [
+                250000000.0,
+                250000000.0,
+                250000000.0
+              ],
+              [
+                150000000.0,
+                150000000.0,
+                150000000.0
+              ]
+            ],
+            "exhaustion_usd": [
+              [
+                1000000000.0,
+                1000000000.0,
+                1000000000.0
+              ],
+              [
+                400000000.0,
+                400000000.0,
+                400000000.0
+              ]
+            ],
+            "limit_usd": [
+              80000000.0,
+              80000000.0,
+              80000000.0
+            ],
+            "portfolio_threshold_usd": 120000000.0,
+            "contract_note": "Synthetic loss-based payments per row, with fixed conditional mean losses and no annual or term cap."
+          },
+          "rows": 421968,
+          "active_rows": 7668,
+          "active_percent": 1.8171994084859515,
+          "values": {
+            "annual_economic_loss_usd": 2217868922.090437,
+            "annual_layer_payment_usd": 113771395.62067369,
+            "joint_layer_exceedance_rate_per_year": 0.07250000000000005,
+            "portfolio_layer_exceedance_rate_per_year": 0.1347000350000001,
+            "annual_layer_stop_loss_usd": 2465085.7801343994
+          },
+          "perils": [
+            {
+              "peril": "seismic",
+              "rows": 419968,
+              "active_rows": 5668,
+              "active_percent": 1.3496266382200548,
+              "joint_rows": 0,
+              "portfolio_exceedance_rows": 7,
+              "annual_rate": 41.99889984,
+              "values": {
+                "annual_economic_loss_usd": 780178195.8854367,
+                "annual_layer_payment_usd": 17682257.5406736,
+                "joint_layer_exceedance_rate_per_year": 0.0,
+                "portfolio_layer_exceedance_rate_per_year": 0.000700035,
+                "annual_layer_stop_loss_usd": 22377.140134400004
+              }
+            },
+            {
+              "peril": "flood",
+              "rows": 2000,
+              "active_rows": 2000,
+              "active_percent": 100.0,
+              "joint_rows": 145,
+              "portfolio_exceedance_rows": 268,
+              "annual_rate": 1.0000000000000004,
+              "values": {
+                "annual_economic_loss_usd": 1437690726.2050006,
+                "annual_layer_payment_usd": 96089138.08000006,
+                "joint_layer_exceedance_rate_per_year": 0.07250000000000005,
+                "portfolio_layer_exceedance_rate_per_year": 0.1340000000000001,
+                "annual_layer_stop_loss_usd": 2442708.6399999997
+              }
+            }
+          ],
+          "iid_expected_nonzero_counts_at_8192": {
+            "annual_economic_loss_usd": 7443.042183443086,
+            "annual_layer_payment_usd": 298.506655031674,
+            "joint_layer_exceedance_rate_per_year": 13.81244641630352,
+            "portfolio_layer_exceedance_rate_per_year": 25.662579527057932,
+            "annual_layer_stop_loss_usd": 25.662579527057932
+          },
+          "iid_zero_observation_probability_at_8192": {
+            "annual_economic_loss_usd": 0.0,
+            "annual_layer_payment_usd": 8.694696171919198e-133,
+            "joint_layer_exceedance_rate_per_year": 9.914433428536608e-07,
+            "portfolio_layer_exceedance_rate_per_year": 6.876856511538545e-12,
+            "annual_layer_stop_loss_usd": 6.876856511538545e-12
+          }
+        },
+        {
+          "countries": [
+            "KAZ",
+            "KGZ",
+            "TJK",
+            "TKM",
+            "UZB"
+          ],
+          "config": {
+            "schema_version": 2,
+            "track": "worldbank_elt",
+            "dataset_directory": "../data",
+            "countries": [
+              "KAZ",
+              "KGZ",
+              "TJK",
+              "TKM",
+              "UZB"
+            ],
+            "peril_order": [
+              "seismic",
+              "flood"
+            ],
+            "attachment_usd": [
+              [
+                250000000.0,
+                250000000.0,
+                250000000.0,
+                250000000.0,
+                250000000.0
+              ],
+              [
+                150000000.0,
+                150000000.0,
+                150000000.0,
+                150000000.0,
+                150000000.0
+              ]
+            ],
+            "exhaustion_usd": [
+              [
+                1000000000.0,
+                1000000000.0,
+                1000000000.0,
+                1000000000.0,
+                1000000000.0
+              ],
+              [
+                400000000.0,
+                400000000.0,
+                400000000.0,
+                400000000.0,
+                400000000.0
+              ]
+            ],
+            "limit_usd": [
+              80000000.0,
+              80000000.0,
+              80000000.0,
+              80000000.0,
+              80000000.0
+            ],
+            "portfolio_threshold_usd": 200000000.0,
+            "contract_note": "Synthetic loss-based payments per row, with fixed conditional mean losses and no annual or term cap."
+          },
+          "rows": 421968,
+          "active_rows": 15135,
+          "active_percent": 3.5867648731657376,
+          "values": {
+            "annual_economic_loss_usd": 4114730009.0026755,
+            "annual_layer_payment_usd": 232105303.10477608,
+            "joint_layer_exceedance_rate_per_year": 0.024000000000000014,
+            "portfolio_layer_exceedance_rate_per_year": 0.22210000500000016,
+            "annual_layer_stop_loss_usd": 5718288.36
+          },
+          "perils": [
+            {
+              "peril": "seismic",
+              "rows": 419968,
+              "active_rows": 13135,
+              "active_percent": 3.127619247180738,
+              "joint_rows": 0,
+              "portfolio_exceedance_rows": 1,
+              "annual_rate": 41.99889984,
+              "values": {
+                "annual_economic_loss_usd": 1923877152.062674,
+                "annual_layer_payment_usd": 54937375.584776,
+                "joint_layer_exceedance_rate_per_year": 0.0,
+                "portfolio_layer_exceedance_rate_per_year": 0.000100005,
+                "annual_layer_stop_loss_usd": 4000.2000000000003
+              }
+            },
+            {
+              "peril": "flood",
+              "rows": 2000,
+              "active_rows": 2000,
+              "active_percent": 100.0,
+              "joint_rows": 48,
+              "portfolio_exceedance_rows": 444,
+              "annual_rate": 1.0000000000000004,
+              "values": {
+                "annual_economic_loss_usd": 2190852856.940001,
+                "annual_layer_payment_usd": 177167927.52000022,
+                "joint_layer_exceedance_rate_per_year": 0.024000000000000014,
+                "portfolio_layer_exceedance_rate_per_year": 0.22200000000000017,
+                "annual_layer_stop_loss_usd": 5714288.159999997
+              }
+            }
+          ],
+          "iid_expected_nonzero_counts_at_8192": {
+            "annual_economic_loss_usd": 8191.999999975952,
+            "annual_layer_payment_usd": 440.77244022797595,
+            "joint_layer_exceedance_rate_per_year": 4.572396055052182,
+            "portfolio_layer_exceedance_rate_per_year": 42.31371611204479,
+            "annual_layer_stop_loss_usd": 42.31371611204479
+          },
+          "iid_zero_observation_probability_at_8192": {
+            "annual_economic_loss_usd": 0.0,
+            "annual_layer_payment_usd": 1.7084870317519343e-197,
+            "joint_layer_exceedance_rate_per_year": 0.01031998904743661,
+            "portfolio_layer_exceedance_rate_per_year": 3.764979640149692e-19,
+            "annual_layer_stop_loss_usd": 3.764979640149692e-19
+          }
+        }
+      ]
+    }
+  },
+  "precision_convention": "Absolute probability and PMF error below 1e-12; currency error divided by max(1, absolute reference) below 1e-12. Dollar absolute errors are also available in official metric rows.",
+  "implementation": {
+    "exact_adb": "Standard library only. Compound Poisson coefficients, capped-monoid binary powers of severity marks, exact shared-count folding, analytic rain semigroup and product-mixture contraction.",
+    "exact_elt": "NumPy only. Load annual_rate and loss_usd once per peril, filter above-attachment rows before payout arithmetic; accumulate actual per-event metrics.",
+    "sample_adb": "Five optimized exponential terminal proposals; seeded scrambled Sobol; exact likelihood weighting and backward conditional bridges for complete term paths.",
+    "sample_elt": "Covariate-only rate-weighted stratification over contract trigger regimes and fixed geometric loss bands (zero target expectations enter stratum weights or budget allocation), with seeded randomized-stratified inverse-CDF draws per stratum and exact arrival-rate stratum weights.",
+    "hybrid_adb": "12-qubit full latent-shock purification; estimates contracted from the executed statevector marginal. Seeded shots verify sampling, rather than determine exact estimates.",
+    "hybrid_elt": "3, 4 or 6 qubits encode peril and the joint country attachment signature; conditional expectations per signature are weighted directly by the simulated statevector probabilities. Quantum circuit verification is genuine; no near-term quantum runtime advantage is asserted.",
+    "circuit": "OpenQASM 3.0 emitted and re-parsed by the RY/CX statevector executor; source, SHA-256, shot counts and per-invocation job IDs retained in official receipts.",
+    "data_validation": "Official runner stages and validates hashed suite inputs; solver reads those staged inputs and omits repeated audit, event-ID and unused standard-deviation scans."
+  },
+  "resource_probe": [
+    {
+      "case": "case-005",
+      "track": "adb_drb",
+      "mode": "exact",
+      "peak_resident_bytes": 22511616,
+      "under_4_gib": true
+    },
+    {
+      "case": "case-005",
+      "track": "adb_drb",
+      "mode": "sample",
+      "peak_resident_bytes": 108904448,
+      "under_4_gib": true
+    },
+    {
+      "case": "case-005",
+      "track": "adb_drb",
+      "mode": "hybrid",
+      "peak_resident_bytes": 37601280,
+      "under_4_gib": true
+    },
+    {
+      "case": "case-006",
+      "track": "worldbank_elt",
+      "mode": "exact",
+      "peak_resident_bytes": 123305984,
+      "under_4_gib": true
+    },
+    {
+      "case": "case-006",
+      "track": "worldbank_elt",
+      "mode": "sample",
+      "peak_resident_bytes": 187203584,
+      "under_4_gib": true
+    },
+    {
+      "case": "case-006",
+      "track": "worldbank_elt",
+      "mode": "hybrid",
+      "peak_resident_bytes": 126156800,
+      "under_4_gib": true
+    }
+  ],
+  "s2_preservation": {
+    "count": 1011,
+    "passed_count": 1011,
+    "passed": true,
+    "runtime_seconds": 0.3626018340000883,
+    "peak_resident_bytes": 470532096
+  },
+  "review_status": "Official accuracy and process validation complete; official protocol retains code_review_required or evidence_review_required for independent execution review.",
+  "generalization_scope": "Two additional independent generated suites are measured checks, not a guarantee for every future contract.",
+  "verification": {
+    "assertions": 3684,
+    "passed": 3684,
+    "all_pass": true,
+    "groups": {
+      "protocol": 9,
+      "hash": 4,
+      "official_score": 234,
+      "team_accuracy": 39,
+      "process": 390,
+      "output_text": 390,
+      "exact_precision": 650,
+      "timing": 6,
+      "budget": 130,
+      "seed_dependence": 13,
+      "circuit_digest": 130,
+      "quantum_shots": 130,
+      "independent_gates": 13,
+      "quantum_norm": 13,
+      "quantum_model": 13,
+      "holdout": 37,
+      "holdout_process": 36,
+      "randomized_pmf": 200,
+      "probability": 200,
+      "randomized_metrics": 1000,
+      "findings": 1,
+      "invariant": 3,
+      "catalogue": 6,
+      "report": 3,
+      "arbitrary_budget": 6,
+      "replay": 6,
+      "memory": 6,
+      "preservation": 15,
+      "s2_regression": 1
+    },
+    "issues": [],
+    "randomized_contracts": 200,
+    "randomized_pmf_max_abs_error": 1.5543122344752192e-15,
+    "randomized_metric_max_scaled_error": 4.227894049111829e-14,
+    "solver_sha256": "56bba0eecdfa5c0debe2616890acd25175718419f9adfd5925fc9bcc346f7cba"
+  }
+}

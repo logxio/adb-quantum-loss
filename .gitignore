@@ -1,0 +1,15 @@
+benchmark/
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+*.zip
+*.pdf
+data/s4/
+data/quantum_sources_s2/
+data/mps_*.npz
+data/verify_adversarial_s2.json
+data/s2_web_reference.json
+data/probe_s3_clean_validation.json
+docs/probe_s3_allwin_clean.png

@@ -1,0 +1,17 @@
+{
+  "team_solver.py": "56bba0eecdfa5c0debe2616890acd25175718419f9adfd5925fc9bcc346f7cba",
+  "src/probe_official_s1.py": "cf5df23f31457eee2fe891e4a31a56f87c6dc235a9a343efcbca1a51df7719b9",
+  "src/probe_official_s2_scaling.py": "4db7577251e6abd1bbae2b294f55d564a4d53b857e8f6374f35c99774246a7a6",
+  "src/probe_s1_baselines.py": "9125c107d39dcabad18338f0e966cd3abba4ded4ebf1772ec4167ed172de54a5",
+  "src/probe_s2_allwin.py": "4ae3230339e4523f1f7e2ec48e62f933e56b01432ded4e2a84cfe73b82d88b8e",
+  "src/probe_s3_allwin_clean.py": "73b6a50d73ccebec5be489478417ade765cd6c36404d166b4f18dc3a0f48d90f",
+  "src/quantum_resources_s2.py": "9eb6a84fca35c103b790f98d1e87bfd8f265a691c1f21ff2b7e4c3c8a043bb65",
+  "src/run_s4_qjlb.py": "5a89a1758191853d7b5cc74cbd4c5d31934e4425d455eeeb223c90bee2e6b079",
+  "src/s2_contract.py": "c753732bf78fd3eda96188a047b0034f4162e66ee2cb26f969eb9590cae05ac7",
+  "src/s3_qcbm_mps.py": "25cc9b567096507038c7bbee8e2d89ac8570c6de0727c14221a5fb3b1b8e7fa9",
+  "src/s4_resource_probe.py": "ccd6caaa811d67465381d60a2efd039d36dd684976f6236dca2d956ea2a28cf7",
+  "src/s4_scientific_findings.py": "a4c02eb91dd9559fbf98a61237a97f608c62fd49586215980919a02aefaa891b",
+  "src/verify_adversarial_s2.py": "e39f0a24e3dea61f0e9d35a54b70f8afd553a7acd8ed087e9a16b0eb61504f63",
+  "src/verify_s3_clean.py": "33ab944e3d012d6ecdb62457fca90a90e1742733b2e48bf6f7ae3282da7d137d",
+  "src/verify_s4_qjlb.py": "4b5217195eabc857c51511002c33483953618f7bd618a7659e0ab35c39e888ad"
+}

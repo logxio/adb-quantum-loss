@@ -1,0 +1,938 @@
+{
+  "schema": "adb.quantum.resource.s2.v1",
+  "checked_at_jst": "2026-11-18T01:10:50.777554+09:00",
+  "hardware_used": false,
+  "paid_tasks_submitted": 0,
+  "environment": {
+    "python": "3.13.14",
+    "numpy": "2.5.5"
+  },
+  "rows": [
+    {
+      "n": 2,
+      "single_year_states": 100,
+      "chi": 10,
+      "purified_mps_loader": {
+        "qubits": 12,
+        "data_qubits": 8,
+        "latent_qubits": 4,
+        "latent_components": 10,
+        "padded_latent_dimension": 16,
+        "local_physical_dimension": 10,
+        "padded_local_dimension": 16,
+        "cnot_count": 494,
+        "ry_count": 495,
+        "serial_depth_upper": 989,
+        "status": "Exact ideal RY plus CNOT gate template; native transpilation and rotation synthesis remain separate",
+        "actual_generated_gate_count": 989,
+        "gate_list_sha256": "f638ae9db6d12cd5053a61243c98ceec9d8f2c720c0f7a913788dbd37fc2994e"
+      },
+      "naive_grover_rudolph": {
+        "classical_probability_entries": 100,
+        "classical_float64_bytes": 800,
+        "nontrivial_branch_rotations_support_aware": 99,
+        "branch_mass_access_assumption": "All required prefix masses are supplied coherently or precomputed; cost cannot be ignored",
+        "compact_binary_data_qubits": 7,
+        "compact_generic_real_loader_cnot": 126,
+        "compact_generic_real_loader_ry": 127,
+        "site_padded_data_qubits": 8,
+        "site_padded_generic_real_loader_cnot": 254,
+        "site_padded_generic_real_loader_ry": 255,
+        "site_padded_serial_depth_upper": 509,
+        "status": "Chosen dense UCR implementation, not a lower bound on structured Grover Rudolph loading"
+      },
+      "unpurified_amplitude_mps": {
+        "assumed_amplitude_bond_dimension": 10,
+        "padded_amplitude_bond_dimension": 16,
+        "local_unitary_qubits": 8,
+        "qubits": 12,
+        "cnot_upper_bound": 62040,
+        "two_qubit_serial_depth_upper": 62040,
+        "status": "Conditional generic QSD upper bound for sequential canonical amplitude MPS isometries; not an observed compilation",
+        "amplitude_rank_certificate_for_unpurified_probability": null,
+        "note": "Probability MPS rank does not bound the rank of its entrywise square root; purification is the certified loader above"
+      },
+      "iqae": {
+        "epsilon_absolute": 3.163304630917887e-07,
+        "relative_error": 0.01,
+        "alpha": 0.05,
+        "confidence": 0.95,
+        "grover_q_calls_upper_bound": 1066121359,
+        "max_rounds": 21,
+        "shots_per_round_upper_bound": 701,
+        "shots_upper_bound": 14721,
+        "a_or_inverse_a_calls_upper_bound": 2132257439,
+        "oracle_unit": "One Q=A S0 A_dagger Sgood application, weighted by its power and shot count",
+        "actual_adaptive_calls": null,
+        "count_status": "Theorem upper bound, not an observed hardware runtime or an IQAE run",
+        "canonical_qae_eq2_M_at_8_over_pi2_success": 111992,
+        "canonical_note": "Variance aware canonical QAE comparison only; 8/pi^2 confidence needs repetition to reach 95 percent"
+      },
+      "end_to_end": {
+        "payoff": "All n bonds exhausted; every local eq/rain state equals 9",
+        "qubits": 23,
+        "data_qubits": 8,
+        "latent_qubits": 4,
+        "objective_qubits": 1,
+        "reusable_clean_work_qubits": 10,
+        "cnot_per_A": 572,
+        "one_qubit_gates_per_A": 620,
+        "cnot_per_Q": 1270,
+        "serial_depth_per_Q_upper": 2728,
+        "iqae_total_cnot_upper_estimate": 1353982546342,
+        "iqae_total_serial_depth_upper_estimate": 2908396614784,
+        "native_mapped_counts": null,
+        "fault_tolerant_physical_qubits": null,
+        "clifford_t_synthesis_counts": null,
+        "error_mitigation_overhead": null,
+        "status": "Concrete ideal logical gate ledger; width fit alone does not establish executable IQAE"
+      },
+      "generic_stop_loss_oracle": {
+        "payoff": "Normalized portfolio stop loss, grid unit USD2500000",
+        "qubits": 35,
+        "sum_register_qubits": 7,
+        "local_lookup_qubits": 5,
+        "local_lookup_table": [
+          0,
+          4,
+          7,
+          11,
+          14,
+          18,
+          21,
+          25,
+          28,
+          32
+        ],
+        "local_lookup_mcx_terms": 22,
+        "cnot_sum_compute": 3730,
+        "cnot_sum_uncompute": 3730,
+        "cnot_payoff_rotation": 128,
+        "cnot_per_A": 8082,
+        "one_qubit_gates_per_A": 12599,
+        "cnot_per_Q": 16290,
+        "serial_depth_per_Q_upper": 41706,
+        "status": "Exact ideal gate template for grid payoffs; arithmetic and uncomputation are fully included"
+      },
+      "hardware_mapping": {
+        "SV1": {
+          "qubit_limit": 34,
+          "loader_width_fits": true,
+          "exhaustion_oracle_width_fits": true,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "State vector simulator, maximum runtime six hours; exponential memory and long IQAE depth still apply"
+        },
+        "TN1": {
+          "status": "retired",
+          "retired_date": "2026-06-23",
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Retired device; historical 50 qubit descriptions do not establish current availability"
+        },
+        "IonQ Forte": {
+          "qubit_limit": 36,
+          "loader_width_fits": true,
+          "exhaustion_oracle_width_fits": true,
+          "native_two_qubit_gate": "XX family after transpilation",
+          "on_demand_gates_per_circuit_limit": 2000,
+          "reservation_gates_per_circuit_limit": 5000,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "All to all connectivity; native gate count, calibration and Grover powers require a fresh device check"
+        },
+        "IQM Garnet": {
+          "qubit_limit": 20,
+          "loader_width_fits": true,
+          "exhaustion_oracle_width_fits": false,
+          "native_two_qubit_gate": "CZ",
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Square lattice routing adds SWAPs; native count and noise remain unmeasured"
+        },
+        "QuEra Aquila": {
+          "atom_limit": 256,
+          "paradigm": "Analog Hamiltonian Simulation",
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Analog Rydberg device does not execute this arbitrary RY/CNOT plus IQAE gate circuit"
+        },
+        "QCentroid Phoenix": {
+          "status": "Phase2 sandbox eligibility is described by ADB",
+          "public_generic_launchpad_cpu_cores": 16,
+          "public_generic_launchpad_ram_gb": 32,
+          "phoenix_gpu_model": null,
+          "phoenix_gpu_count": null,
+          "assigned_credits": null,
+          "assigned_walltime_limit": null,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Generic LaunchPad specification is not a Phoenix allocation or a quantum device capacity guarantee"
+        }
+      },
+      "model_specific_exhaustion_probability": 3.163304630917903e-05,
+      "model_specific_exhaustion_iqae": {
+        "epsilon_absolute": 3.163304630917903e-07,
+        "relative_error": 0.01,
+        "alpha": 0.05,
+        "confidence": 0.95,
+        "grover_q_calls_upper_bound": 1066121359,
+        "max_rounds": 21,
+        "shots_per_round_upper_bound": 701,
+        "shots_upper_bound": 14721,
+        "a_or_inverse_a_calls_upper_bound": 2132257439,
+        "oracle_unit": "One Q=A S0 A_dagger Sgood application, weighted by its power and shot count",
+        "actual_adaptive_calls": null,
+        "count_status": "Theorem upper bound, not an observed hardware runtime or an IQAE run",
+        "canonical_qae_eq2_M_at_8_over_pi2_success": 111992,
+        "canonical_note": "Variance aware canonical QAE comparison only; 8/pi^2 confidence needs repetition to reach 95 percent"
+      },
+      "model_specific_iqae_total_cnot_upper_estimate": 1353982546342
+    },
+    {
+      "n": 5,
+      "single_year_states": 100000,
+      "chi": 10,
+      "purified_mps_loader": {
+        "qubits": 24,
+        "data_qubits": 20,
+        "latent_qubits": 4,
+        "latent_components": 10,
+        "padded_latent_dimension": 16,
+        "local_physical_dimension": 10,
+        "padded_local_dimension": 16,
+        "cnot_count": 1214,
+        "ry_count": 1215,
+        "serial_depth_upper": 2429,
+        "status": "Exact ideal RY plus CNOT gate template; native transpilation and rotation synthesis remain separate",
+        "actual_generated_gate_count": 2429,
+        "gate_list_sha256": "dcc87c96f44e7f7cc522678ed877cef8aec6f37f4521a5dd9c2eab12d43965e1"
+      },
+      "naive_grover_rudolph": {
+        "classical_probability_entries": 100000,
+        "classical_float64_bytes": 800000,
+        "nontrivial_branch_rotations_support_aware": 99999,
+        "branch_mass_access_assumption": "All required prefix masses are supplied coherently or precomputed; cost cannot be ignored",
+        "compact_binary_data_qubits": 17,
+        "compact_generic_real_loader_cnot": 131070,
+        "compact_generic_real_loader_ry": 131071,
+        "site_padded_data_qubits": 20,
+        "site_padded_generic_real_loader_cnot": 1048574,
+        "site_padded_generic_real_loader_ry": 1048575,
+        "site_padded_serial_depth_upper": 2097149,
+        "status": "Chosen dense UCR implementation, not a lower bound on structured Grover Rudolph loading"
+      },
+      "unpurified_amplitude_mps": {
+        "assumed_amplitude_bond_dimension": 10,
+        "padded_amplitude_bond_dimension": 16,
+        "local_unitary_qubits": 8,
+        "qubits": 24,
+        "cnot_upper_bound": 155100,
+        "two_qubit_serial_depth_upper": 155100,
+        "status": "Conditional generic QSD upper bound for sequential canonical amplitude MPS isometries; not an observed compilation",
+        "amplitude_rank_certificate_for_unpurified_probability": null,
+        "note": "Probability MPS rank does not bound the rank of its entrywise square root; purification is the certified loader above"
+      },
+      "iqae": {
+        "epsilon_absolute": 3.163304630917887e-07,
+        "relative_error": 0.01,
+        "alpha": 0.05,
+        "confidence": 0.95,
+        "grover_q_calls_upper_bound": 1066121359,
+        "max_rounds": 21,
+        "shots_per_round_upper_bound": 701,
+        "shots_upper_bound": 14721,
+        "a_or_inverse_a_calls_upper_bound": 2132257439,
+        "oracle_unit": "One Q=A S0 A_dagger Sgood application, weighted by its power and shot count",
+        "actual_adaptive_calls": null,
+        "count_status": "Theorem upper bound, not an observed hardware runtime or an IQAE run",
+        "canonical_qae_eq2_M_at_8_over_pi2_success": 111992,
+        "canonical_note": "Variance aware canonical QAE comparison only; 8/pi^2 confidence needs repetition to reach 95 percent"
+      },
+      "end_to_end": {
+        "payoff": "All n bonds exhausted; every local eq/rain state equals 9",
+        "qubits": 47,
+        "data_qubits": 20,
+        "latent_qubits": 4,
+        "objective_qubits": 1,
+        "reusable_clean_work_qubits": 22,
+        "cnot_per_A": 1436,
+        "one_qubit_gates_per_A": 1568,
+        "cnot_per_Q": 3142,
+        "serial_depth_per_Q_upper": 6736,
+        "iqae_total_cnot_upper_estimate": 3349774449334,
+        "iqae_total_serial_depth_upper_estimate": 7181437696108,
+        "native_mapped_counts": null,
+        "fault_tolerant_physical_qubits": null,
+        "clifford_t_synthesis_counts": null,
+        "error_mitigation_overhead": null,
+        "status": "Concrete ideal logical gate ledger; width fit alone does not establish executable IQAE"
+      },
+      "generic_stop_loss_oracle": {
+        "payoff": "Normalized portfolio stop loss, grid unit USD2500000",
+        "qubits": 60,
+        "sum_register_qubits": 8,
+        "local_lookup_qubits": 5,
+        "local_lookup_table": [
+          0,
+          4,
+          7,
+          11,
+          14,
+          18,
+          21,
+          25,
+          28,
+          32
+        ],
+        "local_lookup_mcx_terms": 22,
+        "cnot_sum_compute": 10675,
+        "cnot_sum_uncompute": 10675,
+        "cnot_payoff_rotation": 256,
+        "cnot_per_A": 22820,
+        "one_qubit_gates_per_A": 35461,
+        "cnot_per_Q": 45910,
+        "serial_depth_per_Q_upper": 117290,
+        "status": "Exact ideal gate template for grid payoffs; arithmetic and uncomputation are fully included"
+      },
+      "hardware_mapping": {
+        "SV1": {
+          "qubit_limit": 34,
+          "loader_width_fits": true,
+          "exhaustion_oracle_width_fits": false,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "State vector simulator, maximum runtime six hours; exponential memory and long IQAE depth still apply"
+        },
+        "TN1": {
+          "status": "retired",
+          "retired_date": "2026-06-23",
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Retired device; historical 50 qubit descriptions do not establish current availability"
+        },
+        "IonQ Forte": {
+          "qubit_limit": 36,
+          "loader_width_fits": true,
+          "exhaustion_oracle_width_fits": false,
+          "native_two_qubit_gate": "XX family after transpilation",
+          "on_demand_gates_per_circuit_limit": 2000,
+          "reservation_gates_per_circuit_limit": 5000,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "All to all connectivity; native gate count, calibration and Grover powers require a fresh device check"
+        },
+        "IQM Garnet": {
+          "qubit_limit": 20,
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "native_two_qubit_gate": "CZ",
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Square lattice routing adds SWAPs; native count and noise remain unmeasured"
+        },
+        "QuEra Aquila": {
+          "atom_limit": 256,
+          "paradigm": "Analog Hamiltonian Simulation",
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Analog Rydberg device does not execute this arbitrary RY/CNOT plus IQAE gate circuit"
+        },
+        "QCentroid Phoenix": {
+          "status": "Phase2 sandbox eligibility is described by ADB",
+          "public_generic_launchpad_cpu_cores": 16,
+          "public_generic_launchpad_ram_gb": 32,
+          "phoenix_gpu_model": null,
+          "phoenix_gpu_count": null,
+          "assigned_credits": null,
+          "assigned_walltime_limit": null,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Generic LaunchPad specification is not a Phoenix allocation or a quantum device capacity guarantee"
+        }
+      },
+      "model_specific_exhaustion_probability": 5.419059335403154e-07,
+      "model_specific_exhaustion_iqae": {
+        "epsilon_absolute": 5.419059335403154e-09,
+        "relative_error": 0.01,
+        "alpha": 0.05,
+        "confidence": 0.95,
+        "grover_q_calls_upper_bound": 64483625619,
+        "max_rounds": 27,
+        "shots_per_round_upper_bound": 727,
+        "shots_upper_bound": 19629,
+        "a_or_inverse_a_calls_upper_bound": 128967270867,
+        "oracle_unit": "One Q=A S0 A_dagger Sgood application, weighted by its power and shot count",
+        "actual_adaptive_calls": null,
+        "count_status": "Theorem upper bound, not an observed hardware runtime or an IQAE run",
+        "canonical_qae_eq2_M_at_8_over_pi2_success": 855657,
+        "canonical_note": "Variance aware canonical QAE comparison only; 8/pi^2 confidence needs repetition to reach 95 percent"
+      },
+      "model_specific_iqae_total_cnot_upper_estimate": 202607579882142
+    },
+    {
+      "n": 10,
+      "single_year_states": 10000000000,
+      "chi": 10,
+      "purified_mps_loader": {
+        "qubits": 44,
+        "data_qubits": 40,
+        "latent_qubits": 4,
+        "latent_components": 10,
+        "padded_latent_dimension": 16,
+        "local_physical_dimension": 10,
+        "padded_local_dimension": 16,
+        "cnot_count": 2414,
+        "ry_count": 2415,
+        "serial_depth_upper": 4829,
+        "status": "Exact ideal RY plus CNOT gate template; native transpilation and rotation synthesis remain separate",
+        "actual_generated_gate_count": 4829,
+        "gate_list_sha256": "07cef5df263256552f172f1a49368d03d124f2068824dd971df6e7c9bbc261fa"
+      },
+      "naive_grover_rudolph": {
+        "classical_probability_entries": 10000000000,
+        "classical_float64_bytes": 80000000000,
+        "nontrivial_branch_rotations_support_aware": 9999999999,
+        "branch_mass_access_assumption": "All required prefix masses are supplied coherently or precomputed; cost cannot be ignored",
+        "compact_binary_data_qubits": 34,
+        "compact_generic_real_loader_cnot": 17179869182,
+        "compact_generic_real_loader_ry": 17179869183,
+        "site_padded_data_qubits": 40,
+        "site_padded_generic_real_loader_cnot": 1099511627774,
+        "site_padded_generic_real_loader_ry": 1099511627775,
+        "site_padded_serial_depth_upper": 2199023255549,
+        "status": "Chosen dense UCR implementation, not a lower bound on structured Grover Rudolph loading"
+      },
+      "unpurified_amplitude_mps": {
+        "assumed_amplitude_bond_dimension": 10,
+        "padded_amplitude_bond_dimension": 16,
+        "local_unitary_qubits": 8,
+        "qubits": 44,
+        "cnot_upper_bound": 310200,
+        "two_qubit_serial_depth_upper": 310200,
+        "status": "Conditional generic QSD upper bound for sequential canonical amplitude MPS isometries; not an observed compilation",
+        "amplitude_rank_certificate_for_unpurified_probability": null,
+        "note": "Probability MPS rank does not bound the rank of its entrywise square root; purification is the certified loader above"
+      },
+      "iqae": {
+        "epsilon_absolute": 3.163304630917887e-07,
+        "relative_error": 0.01,
+        "alpha": 0.05,
+        "confidence": 0.95,
+        "grover_q_calls_upper_bound": 1066121359,
+        "max_rounds": 21,
+        "shots_per_round_upper_bound": 701,
+        "shots_upper_bound": 14721,
+        "a_or_inverse_a_calls_upper_bound": 2132257439,
+        "oracle_unit": "One Q=A S0 A_dagger Sgood application, weighted by its power and shot count",
+        "actual_adaptive_calls": null,
+        "count_status": "Theorem upper bound, not an observed hardware runtime or an IQAE run",
+        "canonical_qae_eq2_M_at_8_over_pi2_success": 111992,
+        "canonical_note": "Variance aware canonical QAE comparison only; 8/pi^2 confidence needs repetition to reach 95 percent"
+      },
+      "end_to_end": {
+        "payoff": "All n bonds exhausted; every local eq/rain state equals 9",
+        "qubits": 87,
+        "data_qubits": 40,
+        "latent_qubits": 4,
+        "objective_qubits": 1,
+        "reusable_clean_work_qubits": 42,
+        "cnot_per_A": 2876,
+        "one_qubit_gates_per_A": 3148,
+        "cnot_per_Q": 6262,
+        "serial_depth_per_Q_upper": 13416,
+        "iqae_total_cnot_upper_estimate": 6676094287654,
+        "iqae_total_serial_depth_upper_estimate": 14303172831648,
+        "native_mapped_counts": null,
+        "fault_tolerant_physical_qubits": null,
+        "clifford_t_synthesis_counts": null,
+        "error_mitigation_overhead": null,
+        "status": "Concrete ideal logical gate ledger; width fit alone does not establish executable IQAE"
+      },
+      "generic_stop_loss_oracle": {
+        "payoff": "Normalized portfolio stop loss, grid unit USD2500000",
+        "qubits": 101,
+        "sum_register_qubits": 9,
+        "local_lookup_qubits": 5,
+        "local_lookup_table": [
+          0,
+          4,
+          7,
+          11,
+          14,
+          18,
+          21,
+          25,
+          28,
+          32
+        ],
+        "local_lookup_mcx_terms": 22,
+        "cnot_sum_compute": 24650,
+        "cnot_sum_uncompute": 24650,
+        "cnot_payoff_rotation": 512,
+        "cnot_per_A": 52226,
+        "one_qubit_gates_per_A": 80807,
+        "cnot_per_Q": 104962,
+        "serial_depth_per_Q_upper": 267434,
+        "status": "Exact ideal gate template for grid payoffs; arithmetic and uncomputation are fully included"
+      },
+      "hardware_mapping": {
+        "SV1": {
+          "qubit_limit": 34,
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "State vector simulator, maximum runtime six hours; exponential memory and long IQAE depth still apply"
+        },
+        "TN1": {
+          "status": "retired",
+          "retired_date": "2026-06-23",
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Retired device; historical 50 qubit descriptions do not establish current availability"
+        },
+        "IonQ Forte": {
+          "qubit_limit": 36,
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "native_two_qubit_gate": "XX family after transpilation",
+          "on_demand_gates_per_circuit_limit": 2000,
+          "reservation_gates_per_circuit_limit": 5000,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "All to all connectivity; native gate count, calibration and Grover powers require a fresh device check"
+        },
+        "IQM Garnet": {
+          "qubit_limit": 20,
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "native_two_qubit_gate": "CZ",
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Square lattice routing adds SWAPs; native count and noise remain unmeasured"
+        },
+        "QuEra Aquila": {
+          "atom_limit": 256,
+          "paradigm": "Analog Hamiltonian Simulation",
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Analog Rydberg device does not execute this arbitrary RY/CNOT plus IQAE gate circuit"
+        },
+        "QCentroid Phoenix": {
+          "status": "Phase2 sandbox eligibility is described by ADB",
+          "public_generic_launchpad_cpu_cores": 16,
+          "public_generic_launchpad_ram_gb": 32,
+          "phoenix_gpu_model": null,
+          "phoenix_gpu_count": null,
+          "assigned_credits": null,
+          "assigned_walltime_limit": null,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Generic LaunchPad specification is not a Phoenix allocation or a quantum device capacity guarantee"
+        }
+      },
+      "model_specific_exhaustion_probability": 1.159498829498036e-08,
+      "model_specific_exhaustion_iqae": {
+        "epsilon_absolute": 1.159498829498036e-10,
+        "relative_error": 0.01,
+        "alpha": 0.05,
+        "confidence": 0.95,
+        "grover_q_calls_upper_bound": 3093986359509,
+        "max_rounds": 32,
+        "shots_per_round_upper_bound": 746,
+        "shots_upper_bound": 23872,
+        "a_or_inverse_a_calls_upper_bound": 6187972742890,
+        "oracle_unit": "One Q=A S0 A_dagger Sgood application, weighted by its power and shot count",
+        "actual_adaptive_calls": null,
+        "count_status": "Theorem upper bound, not an observed hardware runtime or an IQAE run",
+        "canonical_qae_eq2_M_at_8_over_pi2_success": 5849604,
+        "canonical_note": "Variance aware canonical QAE comparison only; 8/pi^2 confidence needs repetition to reach 95 percent"
+      },
+      "model_specific_iqae_total_cnot_upper_estimate": 19374542651901230
+    },
+    {
+      "n": 15,
+      "single_year_states": 1000000000000000,
+      "chi": 10,
+      "purified_mps_loader": {
+        "qubits": 64,
+        "data_qubits": 60,
+        "latent_qubits": 4,
+        "latent_components": 10,
+        "padded_latent_dimension": 16,
+        "local_physical_dimension": 10,
+        "padded_local_dimension": 16,
+        "cnot_count": 3614,
+        "ry_count": 3615,
+        "serial_depth_upper": 7229,
+        "status": "Exact ideal RY plus CNOT gate template; native transpilation and rotation synthesis remain separate",
+        "actual_generated_gate_count": 7229,
+        "gate_list_sha256": "d66bcb26e168d6cb88430b88122a26d2c40bb0f4e0cea835ab83e89bcb83f4ad"
+      },
+      "naive_grover_rudolph": {
+        "classical_probability_entries": 1000000000000000,
+        "classical_float64_bytes": 8000000000000000,
+        "nontrivial_branch_rotations_support_aware": 999999999999999,
+        "branch_mass_access_assumption": "All required prefix masses are supplied coherently or precomputed; cost cannot be ignored",
+        "compact_binary_data_qubits": 50,
+        "compact_generic_real_loader_cnot": 1125899906842622,
+        "compact_generic_real_loader_ry": 1125899906842623,
+        "site_padded_data_qubits": 60,
+        "site_padded_generic_real_loader_cnot": 1152921504606846974,
+        "site_padded_generic_real_loader_ry": 1152921504606846975,
+        "site_padded_serial_depth_upper": 2305843009213693949,
+        "status": "Chosen dense UCR implementation, not a lower bound on structured Grover Rudolph loading"
+      },
+      "unpurified_amplitude_mps": {
+        "assumed_amplitude_bond_dimension": 10,
+        "padded_amplitude_bond_dimension": 16,
+        "local_unitary_qubits": 8,
+        "qubits": 64,
+        "cnot_upper_bound": 465300,
+        "two_qubit_serial_depth_upper": 465300,
+        "status": "Conditional generic QSD upper bound for sequential canonical amplitude MPS isometries; not an observed compilation",
+        "amplitude_rank_certificate_for_unpurified_probability": null,
+        "note": "Probability MPS rank does not bound the rank of its entrywise square root; purification is the certified loader above"
+      },
+      "iqae": {
+        "epsilon_absolute": 3.163304630917887e-07,
+        "relative_error": 0.01,
+        "alpha": 0.05,
+        "confidence": 0.95,
+        "grover_q_calls_upper_bound": 1066121359,
+        "max_rounds": 21,
+        "shots_per_round_upper_bound": 701,
+        "shots_upper_bound": 14721,
+        "a_or_inverse_a_calls_upper_bound": 2132257439,
+        "oracle_unit": "One Q=A S0 A_dagger Sgood application, weighted by its power and shot count",
+        "actual_adaptive_calls": null,
+        "count_status": "Theorem upper bound, not an observed hardware runtime or an IQAE run",
+        "canonical_qae_eq2_M_at_8_over_pi2_success": 111992,
+        "canonical_note": "Variance aware canonical QAE comparison only; 8/pi^2 confidence needs repetition to reach 95 percent"
+      },
+      "end_to_end": {
+        "payoff": "All n bonds exhausted; every local eq/rain state equals 9",
+        "qubits": 127,
+        "data_qubits": 60,
+        "latent_qubits": 4,
+        "objective_qubits": 1,
+        "reusable_clean_work_qubits": 62,
+        "cnot_per_A": 4316,
+        "one_qubit_gates_per_A": 4728,
+        "cnot_per_Q": 9382,
+        "serial_depth_per_Q_upper": 20096,
+        "iqae_total_cnot_upper_estimate": 10002414125974,
+        "iqae_total_serial_depth_upper_estimate": 21424907967188,
+        "native_mapped_counts": null,
+        "fault_tolerant_physical_qubits": null,
+        "clifford_t_synthesis_counts": null,
+        "error_mitigation_overhead": null,
+        "status": "Concrete ideal logical gate ledger; width fit alone does not establish executable IQAE"
+      },
+      "generic_stop_loss_oracle": {
+        "payoff": "Normalized portfolio stop loss, grid unit USD2500000",
+        "qubits": 141,
+        "sum_register_qubits": 9,
+        "local_lookup_qubits": 5,
+        "local_lookup_table": [
+          0,
+          4,
+          7,
+          11,
+          14,
+          18,
+          21,
+          25,
+          28,
+          32
+        ],
+        "local_lookup_mcx_terms": 22,
+        "cnot_sum_compute": 36975,
+        "cnot_sum_uncompute": 36975,
+        "cnot_payoff_rotation": 512,
+        "cnot_per_A": 78076,
+        "one_qubit_gates_per_A": 120947,
+        "cnot_per_Q": 156902,
+        "serial_depth_per_Q_upper": 400054,
+        "status": "Exact ideal gate template for grid payoffs; arithmetic and uncomputation are fully included"
+      },
+      "hardware_mapping": {
+        "SV1": {
+          "qubit_limit": 34,
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "State vector simulator, maximum runtime six hours; exponential memory and long IQAE depth still apply"
+        },
+        "TN1": {
+          "status": "retired",
+          "retired_date": "2026-06-23",
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Retired device; historical 50 qubit descriptions do not establish current availability"
+        },
+        "IonQ Forte": {
+          "qubit_limit": 36,
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "native_two_qubit_gate": "XX family after transpilation",
+          "on_demand_gates_per_circuit_limit": 2000,
+          "reservation_gates_per_circuit_limit": 5000,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "All to all connectivity; native gate count, calibration and Grover powers require a fresh device check"
+        },
+        "IQM Garnet": {
+          "qubit_limit": 20,
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "native_two_qubit_gate": "CZ",
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Square lattice routing adds SWAPs; native count and noise remain unmeasured"
+        },
+        "QuEra Aquila": {
+          "atom_limit": 256,
+          "paradigm": "Analog Hamiltonian Simulation",
+          "loader_width_fits": false,
+          "exhaustion_oracle_width_fits": false,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Analog Rydberg device does not execute this arbitrary RY/CNOT plus IQAE gate circuit"
+        },
+        "QCentroid Phoenix": {
+          "status": "Phase2 sandbox eligibility is described by ADB",
+          "public_generic_launchpad_cpu_cores": 16,
+          "public_generic_launchpad_ram_gb": 32,
+          "phoenix_gpu_model": null,
+          "phoenix_gpu_count": null,
+          "assigned_credits": null,
+          "assigned_walltime_limit": null,
+          "end_to_end_iqae_demonstrated": false,
+          "boundary": "Generic LaunchPad specification is not a Phoenix allocation or a quantum device capacity guarantee"
+        }
+      },
+      "model_specific_exhaustion_probability": 1.7113079312836441e-09,
+      "model_specific_exhaustion_iqae": {
+        "epsilon_absolute": 1.711307931283644e-11,
+        "relative_error": 0.01,
+        "alpha": 0.05,
+        "confidence": 0.95,
+        "grover_q_calls_upper_bound": 21200417402253,
+        "max_rounds": 35,
+        "shots_per_round_upper_bound": 754,
+        "shots_upper_bound": 26390,
+        "a_or_inverse_a_calls_upper_bound": 42400834830896,
+        "oracle_unit": "One Q=A S0 A_dagger Sgood application, weighted by its power and shot count",
+        "actual_adaptive_calls": null,
+        "count_status": "Theorem upper bound, not an observed hardware runtime or an IQAE run",
+        "canonical_qae_eq2_M_at_8_over_pi2_success": 15226409,
+        "canonical_note": "Variance aware canonical QAE comparison only; 8/pi^2 confidence needs repetition to reach 95 percent"
+      },
+      "model_specific_iqae_total_cnot_upper_estimate": 198902316181836886
+    }
+  ],
+  "loader_statevector_verification": {
+    "n": 2,
+    "qubits": 12,
+    "gate_count": 989,
+    "cnot_count": 494,
+    "ry_count": 495,
+    "statevector_norm_error": 5.551115123125783e-16,
+    "amplitude_max_abs_error": 4.718447854656915e-16,
+    "marginal_term_pmf_max_abs_error": 2.220446049250313e-16,
+    "unpurified_sqrt_probability_matrix_singular_values": [
+      0.9961066514001964,
+      0.08199586058814998,
+      0.032266826917219917,
+      0.002656087315356523,
+      0.0001219131246215867,
+      1.0035443048481354e-05,
+      2.0712864358731918e-07,
+      1.705007326294602e-08,
+      5.403761611274374e-09,
+      4.448179144627159e-10
+    ],
+    "unpurified_sqrt_probability_matrix_rank_at_1e_12": 10,
+    "hardware_used": false,
+    "engine": "numpy real statevector over the actual synthesized gate list"
+  },
+  "tail_probability_scenario": {
+    "p": 3.163304630917887e-05,
+    "source": "Official two country adb-base term exhaustion probability",
+    "n_greater_than_2_interpretation": "Common probability sensitivity scenario; not a measured n-country exhaustion probability"
+  },
+  "stop_loss_normalization": {
+    "loss_unit_usd": 2500000,
+    "n2_threshold_usd": 80000000,
+    "n2_max_payoff_usd": 80000000,
+    "n2_expected_stop_loss_usd": 282354.698566141,
+    "n2_amplitude": 0.0035294337320767627,
+    "n2_iqae": {
+      "epsilon_absolute": 3.529433732076763e-05,
+      "relative_error": 0.01,
+      "alpha": 0.05,
+      "confidence": 0.95,
+      "grover_q_calls_upper_bound": 9008527,
+      "max_rounds": 14,
+      "shots_per_round_upper_bound": 661,
+      "shots_upper_bound": 9254,
+      "a_or_inverse_a_calls_upper_bound": 18026308,
+      "oracle_unit": "One Q=A S0 A_dagger Sgood application, weighted by its power and shot count",
+      "actual_adaptive_calls": null,
+      "count_status": "Theorem upper bound, not an observed hardware runtime or an IQAE run",
+      "canonical_qae_eq2_M_at_8_over_pi2_success": 10584,
+      "canonical_note": "Variance aware canonical QAE comparison only; 8/pi^2 confidence needs repetition to reach 95 percent"
+    }
+  },
+  "cost_accounting": {
+    "classical": "Calibration, TT construction, canonicalization and gate angle synthesis precede coherent oracle execution",
+    "loading": "Purification prepares shared latent and conditional local states; latent is retained, never postselected",
+    "payoff": "Specialized exhaustion MCX and generic loss lookup plus addition plus rotation are separately listed",
+    "inverse": "Every Q includes A and its inverse, plus zero and good state reflections",
+    "sampling": "IQAE counts Q applications across all shots and powers, plus initial A per circuit shot",
+    "precision": "RY angles are ideal real rotations; fault tolerant synthesis, code distance and physical overhead require a chosen gate error budget",
+    "bias": "Allocate separate loading, arithmetic and statistical error budgets before a 1 percent total relative error claim"
+  },
+  "references": [
+    {
+      "id": "chakrabarti2021",
+      "url": "https://quantum-journal.org/papers/q-2021-06-01-463/",
+      "doi": "10.22331/q-2021-06-01-463",
+      "used_for": "Full loading, payoff, inverse, oracle repetition, precision and fault tolerant cost accounting"
+    },
+    {
+      "id": "egger2021",
+      "url": "https://arxiv.org/abs/1907.03044",
+      "doi": "10.1109/TC.2020.3038063",
+      "used_for": "Correlated latent loading U, summation S and comparator C; A=C S U"
+    },
+    {
+      "id": "grinko2021",
+      "url": "https://www.nature.com/articles/s41534-021-00379-1",
+      "doi": "10.1038/s41534-021-00379-1",
+      "used_for": "Theorem1 Eqs6 through8, epsilon=relative_error times probability"
+    },
+    {
+      "id": "shende2006",
+      "url": "https://arxiv.org/abs/quant-ph/0406176",
+      "used_for": "Uniformly controlled rotations and generic QSD unitary synthesis bound"
+    },
+    {
+      "id": "mottonen2005",
+      "url": "https://arxiv.org/abs/quant-ph/0407010",
+      "used_for": "Explicit Gray code controlled rotation angles and ideal CNOT gate template"
+    },
+    {
+      "id": "grover_rudolph2002",
+      "url": "https://arxiv.org/abs/quant-ph/0208112",
+      "used_for": "Conditional prefix mass loading; efficient integrability is an assumption, not free arbitrary data access"
+    },
+    {
+      "id": "braket_devices",
+      "url": "https://docs.aws.amazon.com/braket/latest/developerguide/braket-devices.html"
+    },
+    {
+      "id": "braket_simulators",
+      "url": "https://docs.aws.amazon.com/braket/latest/developerguide/braket-submit-tasks-simulators.html"
+    },
+    {
+      "id": "braket_retirement",
+      "url": "https://docs.aws.amazon.com/braket/latest/developerguide/doc-history.html",
+      "fact": "TN1 retired June23,2026"
+    },
+    {
+      "id": "braket_quotas",
+      "url": "https://docs.aws.amazon.com/braket/latest/developerguide/braket-quotas.html"
+    },
+    {
+      "id": "ionq",
+      "url": "https://www.ionq.com/quantum-systems/forte"
+    },
+    {
+      "id": "iqm",
+      "url": "https://aws.amazon.com/braket/quantum-computers/iqm/"
+    },
+    {
+      "id": "quera",
+      "url": "https://aws.amazon.com/braket/quantum-computers/quera/"
+    },
+    {
+      "id": "qcentroid",
+      "url": "https://docs.qcentroid.com/launchpad/getting-started/"
+    },
+    {
+      "id": "adb_sandbox",
+      "url": "https://challenges.adb.org/en/challenges/quantum-joint-loss-challenge/pages/timeline-process-and-selection-criteria?lang=en"
+    }
+  ],
+  "source_manifest": {
+    "references": [
+      {
+        "id": "chakrabarti2021",
+        "url": "https://quantum-journal.org/papers/q-2021-06-01-463/",
+        "doi": "10.22331/q-2021-06-01-463",
+        "used_for": "Full loading, payoff, inverse, oracle repetition, precision and fault tolerant cost accounting"
+      },
+      {
+        "id": "egger2021",
+        "url": "https://arxiv.org/abs/1907.03044",
+        "doi": "10.1109/TC.2020.3038063",
+        "used_for": "Correlated latent loading U, summation S and comparator C; A=C S U"
+      },
+      {
+        "id": "grinko2021",
+        "url": "https://www.nature.com/articles/s41534-021-00379-1",
+        "doi": "10.1038/s41534-021-00379-1",
+        "used_for": "Theorem1 Eqs6 through8, epsilon=relative_error times probability"
+      },
+      {
+        "id": "shende2006",
+        "url": "https://arxiv.org/abs/quant-ph/0406176",
+        "used_for": "Uniformly controlled rotations and generic QSD unitary synthesis bound"
+      },
+      {
+        "id": "mottonen2005",
+        "url": "https://arxiv.org/abs/quant-ph/0407010",
+        "used_for": "Explicit Gray code controlled rotation angles and ideal CNOT gate template"
+      },
+      {
+        "id": "grover_rudolph2002",
+        "url": "https://arxiv.org/abs/quant-ph/0208112",
+        "used_for": "Conditional prefix mass loading; efficient integrability is an assumption, not free arbitrary data access"
+      },
+      {
+        "id": "braket_devices",
+        "url": "https://docs.aws.amazon.com/braket/latest/developerguide/braket-devices.html"
+      },
+      {
+        "id": "braket_simulators",
+        "url": "https://docs.aws.amazon.com/braket/latest/developerguide/braket-submit-tasks-simulators.html"
+      },
+      {
+        "id": "braket_retirement",
+        "url": "https://docs.aws.amazon.com/braket/latest/developerguide/doc-history.html",
+        "fact": "TN1 retired June23,2026"
+      },
+      {
+        "id": "braket_quotas",
+        "url": "https://docs.aws.amazon.com/braket/latest/developerguide/braket-quotas.html"
+      },
+      {
+        "id": "ionq",
+        "url": "https://www.ionq.com/quantum-systems/forte"
+      },
+      {
+        "id": "iqm",
+        "url": "https://aws.amazon.com/braket/quantum-computers/iqm/"
+      },
+      {
+        "id": "quera",
+        "url": "https://aws.amazon.com/braket/quantum-computers/quera/"
+      },
+      {
+        "id": "qcentroid",
+        "url": "https://docs.qcentroid.com/launchpad/getting-started/"
+      },
+      {
+        "id": "adb_sandbox",
+        "url": "https://challenges.adb.org/en/challenges/quantum-joint-loss-challenge/pages/timeline-process-and-selection-criteria?lang=en"
+      }
+    ],
+    "scope": "Published reference URLs; source documents are obtained separately."
+  },
+  "interpretation": "Classical low rank contraction and an ideal coherent loader are demonstrated separately; an end to end quantum speedup has not been measured"
+}

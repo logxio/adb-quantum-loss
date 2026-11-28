@@ -1,0 +1,11 @@
+{
+  "scope": "Public package code and derived inputs; original private archive is excluded.",
+  "files": {
+    "data/probe_official_s1_results.json": "bcbc59dcc6aa4c1b1cfc4b8e532699b91b02612a2ebbf2cbd843b3012d1e419c",
+    "data/probe_s1_results.json": "8a46baadb49487fdc82c0cbb84fa4937c239f93dc70400f553d08eaa2e06cb3a",
+    "data/processed/loss_gdp_panel.csv": "3b7b463fee711e4c1b1080908b51d9bc977c67d7b55551a1ed78838866048e71",
+    "src/probe_official_s1.py": "cf5df23f31457eee2fe891e4a31a56f87c6dc235a9a343efcbca1a51df7719b9",
+    "src/probe_s1_baselines.py": "9125c107d39dcabad18338f0e966cd3abba4ded4ebf1772ec4167ed172de54a5"
+  },
+  "count": 5
+}
